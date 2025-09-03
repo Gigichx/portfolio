@@ -760,10 +760,18 @@
                 <div class="col-lg-5">
                     <div class="hero-visual">
                         <div class="hero-logo-container">
+                            <div class="logo-glow"></div>
                             <div class="hero-logo">
-                                <div class="logo-triangle"></div>
-                                <div class="logo-main"></div>
-                                <div class="logo-accent"></div>
+                                <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- Triangolo rosso -->
+                                    <polygon points="50,50 200,50 125,180" fill="#DC2626" />
+                                    <!-- Lettera G nera -->
+                                    <path
+                                        d="M180 80 L350 80 L350 130 L350 180 L350 230 L350 280 L350 330 L300 380 L230 380 L180 330 L180 280 L180 230 L230 230 L280 230 L280 280 L250 310 L230 310 L210 290 L210 250 L180 250 L180 200 L180 150 L180 100 Z"
+                                        fill="#1a1a1a" />
+                                    <!-- Triangolo interno -->
+                                    <polygon points="200,280 280,280 240,350" fill="#1a1a1a" />
+                                </svg>
                             </div>
                         </div>
                     </div>
@@ -1120,8 +1128,8 @@
     <!-- Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Script Custom -->
-    <script src="static/JS/script.js"></script>
+    <script src="/static/JS/script.js">
+    </script>
 </body>
 
 </html>
