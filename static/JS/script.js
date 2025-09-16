@@ -1,194 +1,373 @@
-// Animated Counter
-function animateCounters() {
-    const counters = document.querySelectorAll('[data-count]');
-    counters.forEach(counter => {
-        const target = parseInt(counter.getAttribute('data-count'));
-        const count = parseInt(counter.innerText);
-        const increment = target / 100;
+// ===== DOCUMENT READY =====
+document.addEventListener('DOMContentLoaded', function () {
+    // Initialize all functions
+    initNavbar();
+    initTypingEffect();
+    initPortfolioFilters();
+    initScrollAnimations();
+    initContactForm();
+    initSmoothScrolling();
+});
 
-        if (count < target) {
-            counter.innerText = Math.ceil(count + increment);
-            setTimeout(() => animateCounters(), 20);
+// ===== NAVBAR FUNCTIONALITY =====
+function initNavbar() {
+    const navbar = document.querySelector('.custom-navbar');
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+
+    // Handle navbar background on scroll
+    window.addEventListener('scroll', function () {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
         } else {
-            counter.innerText = target;
+            navbar.classList.remove('scrolled');
         }
+
+        // Update active nav link based on scroll position
+        updateActiveNavLink();
+    });
+
+    // Close mobile menu when clicking on nav links
+    navLinks.forEach(link => {
+        link.addEventListener('click', function () {
+            const navbarCollapse = document.querySelector('.navbar-collapse');
+            if (navbarCollapse.classList.contains('show')) {
+                const bsCollapse = new bootstrap.Collapse(navbarCollapse);
+                bsCollapse.hide();
+            }
+        });
     });
 }
 
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            const offsetTop = target.offsetTop - 80;
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-            });
-        }
-    });
-});
-
-// Navbar scroll effect
-window.addEventListener('scroll', function () {
-    const navbar = document.querySelector('.custom-navbar');
-    if (window.scrollY > 100) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-});
-
-// Active navigation link
-window.addEventListener('scroll', function () {
+function updateActiveNavLink() {
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
 
-    let current = '';
+    let currentSection = '';
+
     sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        if (pageYOffset >= sectionTop - 200) {
-            current = section.getAttribute('id');
+        const sectionTop = section.offsetTop - 100;
+        const sectionHeight = section.offsetHeight;
+
+        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+            currentSection = section.getAttribute('id');
         }
     });
 
     navLinks.forEach(link => {
         link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + current) {
+        if (link.getAttribute('href') === '#' + currentSection) {
             link.classList.add('active');
         }
     });
-});
-
-// Fade in animation on scroll
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('animate');
-        }
-    });
-}, observerOptions);
-
-document.querySelectorAll('.fade-in-up').forEach(el => {
-    observer.observe(el);
-});
-
-// Start counter animation when stats section is visible
-const statsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            animateCounters();
-            statsObserver.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.5 });
-
-const statsSection = document.querySelector('.stats-section');
-if (statsSection) {
-    statsObserver.observe(statsSection);
 }
 
-// Generate floating particles
-function createParticles() {
-    const container = document.querySelector('.animated-bg');
-    for (let i = 0; i < 20; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'bg-particle';
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.top = Math.random() * 100 + '%';
-        particle.style.animationDelay = Math.random() * 8 + 's';
-        particle.style.animationDuration = (8 + Math.random() * 4) + 's';
-        container.appendChild(particle);
+// ===== TYPING EFFECT =====
+function initTypingEffect() {
+    const typingText = document.querySelector('.typing-text');
+    const text = 'Luigi Lattanzio';
+    let index = 0;
+
+    if (typingText) {
+        typingText.textContent = '';
+
+        function typeChar() {
+            if (index < text.length) {
+                typingText.textContent += text.charAt(index);
+                index++;
+                setTimeout(typeChar, 100);
+            }
+        }
+
+        // Start typing after a short delay
+        setTimeout(typeChar, 1000);
     }
 }
 
-// Form submission
-document.getElementById('contactForm').addEventListener('submit', function (e) {
-    e.preventDefault();
+// ===== PORTFOLIO FILTERS =====
+function initPortfolioFilters() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
 
-    const formData = new FormData(this);
-    const firstName = formData.get('firstName');
-    const lastName = formData.get('lastName');
-    const email = formData.get('email');
-    const service = formData.get('service');
-    const budget = formData.get('budget');
-    const message = formData.get('message');
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const filter = this.getAttribute('data-filter');
 
-    // Create email content
-    const subject = encodeURIComponent(`Nuova Richiesta Progetto: ${service || 'Servizio non specificato'}`);
-    const emailBody = encodeURIComponent(`
-Nuova richiesta di progetto da ${firstName} ${lastName}
+            // Update active button
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
 
-DETTAGLI CONTATTO:
-Nome: ${firstName} ${lastName}
-Email: ${email}
-Servizio richiesto: ${service || 'Non specificato'}
-Budget: ${budget || 'Non specificato'}
+            // Filter portfolio items
+            portfolioItems.forEach(item => {
+                if (filter === 'all' || item.classList.contains(filter)) {
+                    item.classList.remove('hide');
+                    setTimeout(() => {
+                        item.style.display = 'block';
+                    }, 10);
+                } else {
+                    item.classList.add('hide');
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 300);
+                }
+            });
+        });
+    });
+}
 
-MESSAGGIO:
-${message}
+// ===== SCROLL ANIMATIONS =====
+function initScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
 
----
-Questa email è stata generata automaticamente dal portfolio di Luigi Lattanzio.
-            `);
+    const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in-up');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
 
-    const mailtoLink = `mailto:lattanzio.luigi.business@gmail.com?subject=${subject}&body=${emailBody}`;
+    // Observe elements for animation
+    const elementsToAnimate = document.querySelectorAll(
+        '.service-card, .portfolio-card, .contact-item, .skill-item'
+    );
 
-    // Show loading state
-    const submitBtn = this.querySelector('button[type="submit"]');
-    const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = '<i class="bi bi-hourglass-split me-2"></i>Invio in corso...';
-    submitBtn.disabled = true;
+    elementsToAnimate.forEach(element => {
+        observer.observe(element);
+    });
 
-    // Simulate processing time
-    setTimeout(() => {
-        window.location.href = mailtoLink;
+    // Parallax effect for hero shapes
+    window.addEventListener('scroll', function () {
+        const scrolled = window.pageYOffset;
+        const shapes = document.querySelectorAll('.shape');
 
-        // Reset button after a moment
-        setTimeout(() => {
-            submitBtn.innerHTML = '<i class="bi bi-check-circle me-2"></i>Messaggio Preparato!';
+        shapes.forEach((shape, index) => {
+            const speed = 0.5 + (index * 0.1);
+            const yPos = -(scrolled * speed);
+            shape.style.transform = `translateY(${yPos}px) rotate(45deg)`;
+        });
+    });
+}
 
+// ===== CONTACT FORM =====
+function initContactForm() {
+    const contactForm = document.querySelector('.contact-form');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Get form data
+            const formData = new FormData(this);
+            const formInputs = this.querySelectorAll('input, textarea');
+            const submitBtn = this.querySelector('button[type="submit"]');
+
+            // Show loading state
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Invio in corso...';
+            submitBtn.disabled = true;
+
+            // Simulate form submission
             setTimeout(() => {
-                submitBtn.innerHTML = originalText;
+                // Show success message
+                showNotification('Messaggio inviato con successo!', 'success');
+
+                // Reset form
+                this.reset();
+
+                // Reset button
+                submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
-            }, 3000);
-        }, 1000);
 
-        // Show success message
-        const successAlert = document.createElement('div');
-        successAlert.className = 'alert alert-success mt-3';
-        successAlert.innerHTML = `
-                    <i class="bi bi-check-circle me-2"></i>
-                    Il tuo client email si aprirà con il messaggio pre-compilato. 
-                    Se non si apre automaticamente, contattami direttamente a: 
-                    <strong>lattanzio.luigi.business@gmail.com</strong>
-                `;
-        this.appendChild(successAlert);
+                // Add animation to form inputs
+                formInputs.forEach((input, index) => {
+                    setTimeout(() => {
+                        input.style.transform = 'scale(0.98)';
+                        setTimeout(() => {
+                            input.style.transform = 'scale(1)';
+                        }, 100);
+                    }, index * 50);
+                });
 
-        // Remove success message after 10 seconds
+            }, 2000);
+        });
+
+        // Add focus effects to form inputs
+        const formInputs = contactForm.querySelectorAll('input, textarea');
+        formInputs.forEach(input => {
+            input.addEventListener('focus', function () {
+                this.parentElement.style.transform = 'scale(1.02)';
+            });
+
+            input.addEventListener('blur', function () {
+                this.parentElement.style.transform = 'scale(1)';
+            });
+        });
+    }
+}
+
+// ===== SMOOTH SCROLLING =====
+function initSmoothScrolling() {
+    const navLinks = document.querySelectorAll('a[href^="#"]');
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                const headerOffset = 80;
+                const elementPosition = targetElement.offsetTop;
+                const offsetPosition = elementPosition - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
+
+// ===== NOTIFICATION SYSTEM =====
+function showNotification(message, type = 'info') {
+    // Remove existing notifications
+    const existingNotifications = document.querySelectorAll('.notification');
+    existingNotifications.forEach(notification => notification.remove());
+
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.innerHTML = `
+        <div class="notification-content">
+            <i class="fas ${type === 'success' ? 'fa-check-circle' : 'fa-info-circle'}"></i>
+            <span>${message}</span>
+        </div>
+    `;
+
+    // Add notification styles
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: ${type === 'success' ? '#28a745' : '#007bff'};
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 5px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        z-index: 1000;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+    `;
+
+    document.body.appendChild(notification);
+
+    // Animate in
+    setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+    }, 100);
+
+    // Auto remove after 5 seconds
+    setTimeout(() => {
+        notification.style.transform = 'translateX(100%)';
         setTimeout(() => {
-            successAlert.remove();
-        }, 10000);
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
+    }, 5000);
+}
 
-    }, 1500);
+// ===== PORTFOLIO MODAL (Optional Enhancement) =====
+function initPortfolioModal() {
+    const portfolioCards = document.querySelectorAll('.portfolio-card');
+
+    portfolioCards.forEach(card => {
+        card.addEventListener('click', function () {
+            // You can add modal functionality here
+            console.log('Portfolio item clicked');
+        });
+    });
+}
+
+// ===== LOADING SCREEN =====
+function initLoadingScreen() {
+    window.addEventListener('load', function () {
+        const loader = document.querySelector('.loader');
+        if (loader) {
+            loader.style.opacity = '0';
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 500);
+        }
+    });
+}
+
+// ===== UTILITY FUNCTIONS =====
+function debounce(func, wait, immediate) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            timeout = null;
+            if (!immediate) func(...args);
+        };
+        const callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func(...args);
+    };
+}
+
+// Add resize handler with debounce
+window.addEventListener('resize', debounce(function () {
+    // Handle responsive adjustments
+    updateActiveNavLink();
+}, 250));
+
+// ===== EASTER EGG =====
+let konamiCode = [];
+const konamiSequence = [
+    'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
+    'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight',
+    'KeyB', 'KeyA'
+];
+
+document.addEventListener('keydown', function (e) {
+    konamiCode.push(e.code);
+
+    if (konamiCode.length > konamiSequence.length) {
+        konamiCode.shift();
+    }
+
+    if (konamiCode.join('') === konamiSequence.join('')) {
+        // Easter egg activated
+        document.body.style.transform = 'rotate(360deg)';
+        document.body.style.transition = 'transform 2s ease';
+
+        setTimeout(() => {
+            document.body.style.transform = 'rotate(0deg)';
+            showNotification('🎉 Codice Konami attivato! Code. Fly. Create. 🚁', 'success');
+        }, 2000);
+
+        konamiCode = [];
+    }
 });
 
-// Initialize particles on load
-window.addEventListener('load', createParticles);
-
-// Portfolio items interaction
-document.querySelectorAll('.portfolio-item').forEach(item => {
-    item.addEventListener('mouseenter', function () {
-        this.style.transform = 'scale(1.02) translateY(-5px)';
+// ===== PERFORMANCE MONITORING =====
+function initPerformanceMonitoring() {
+    // Monitor page load time
+    window.addEventListener('load', function () {
+        const loadTime = performance.now();
+        console.log(`Page loaded in ${loadTime.toFixed(2)}ms`);
     });
+}
 
-    item.addEventListener('mouseleave', function () {
-        this.style.transform = 'scale(1) translateY(0)';
-    });
-});
+// Initialize performance monitoring in development
+if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+    initPerformanceMonitoring();
+}
