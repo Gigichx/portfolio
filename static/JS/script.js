@@ -68,19 +68,47 @@ function initTypingEffect() {
     let index = 0;
 
     if (typingText) {
-        typingText.textContent = '';
+        typingText.textContent = ''; // Parte vuoto
 
         function typeChar() {
-            if (index < text.length) {
-                typingText.textContent += text.charAt(index);
+            if (index <= text.length) {
+                typingText.textContent = text.slice(0, index);
                 index++;
-                setTimeout(typeChar, 100);
+
+                // Velocità typewriter realistica
+                let speed = 120 + Math.random() * 80; // 120-200ms
+                setTimeout(typeChar, speed);
             }
         }
 
-        // Start typing after a short delay
-        setTimeout(typeChar, 1000);
+        // Inizia dopo 500ms dal caricamento pagina
+        setTimeout(typeChar, 500);
     }
+}
+
+// ===== TYPING SOUND EFFECT (Simulato) =====
+function addTypingSoundEffect() {
+    const typingText = document.querySelector('.typing-text');
+    if (!typingText) return;
+
+    // Crea un observer per monitorare i cambiamenti del testo
+    const observer = new MutationObserver(function (mutations) {
+        mutations.forEach(function (mutation) {
+            if (mutation.type === 'childList' || mutation.type === 'characterData') {
+                // Simula il suono del typing con un piccolo effetto visivo
+                typingText.style.textShadow = '0 0 5px rgba(229, 62, 62, 0.5)';
+                setTimeout(() => {
+                    typingText.style.textShadow = 'none';
+                }, 100);
+            }
+        });
+    });
+
+    observer.observe(typingText, {
+        childList: true,
+        subtree: true,
+        characterData: true
+    });
 }
 
 // ===== PORTFOLIO FILTERS =====
