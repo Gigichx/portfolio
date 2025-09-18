@@ -102,7 +102,8 @@ body {
     height: 100vh;
     display: flex;
     align-items: center;
-    background: linear-gradient(135deg, var(--dark-gray) 0%, #1a1a1a 100%);
+    /*background: linear-gradient(135deg, var(--dark-gray) 0%, #EDEDEC 100%);*/
+    background: #EDEDEC;
     position: relative;
     overflow: hidden;
 }
@@ -169,26 +170,36 @@ body {
 .hero-title {
     font-size: 3.5rem;
     font-weight: 700;
-    color: white;
+    color: #1E1E1E;
     margin-bottom: 1rem;
 }
 
 .typing-text {
+    display: inline-block;
     border-right: 3px solid var(--primary-red);
-    animation: cursor-blink 1s infinite;
     white-space: nowrap;
     overflow: hidden;
+    width: 0;
+    animation: typewriter 3s steps(15) 0.5s 1 normal both,
+        cursor-blink 1s infinite;
+}
+
+.typing-text::before {
+    content: "Luigi Lattanzio";
+}
+
+@keyframes typewriter {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 11.8ch;
+    }
 }
 
 @keyframes cursor-blink {
-
-    0%,
     50% {
-        border-color: var(--primary-red);
-    }
-
-    51%,
-    100% {
         border-color: transparent;
     }
 }
@@ -197,12 +208,12 @@ body {
     font-size: 1.5rem;
     color: var(--primary-red);
     margin-bottom: 1.5rem;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 .hero-description {
     font-size: 1.2rem;
-    color: #ccc;
+    color: #1E1E1E;
     margin-bottom: 2rem;
     max-width: 600px;
 }
@@ -214,7 +225,7 @@ body {
 }
 
 .code-text {
-    color: #61dafb;
+    color: #1E1E1E;
 }
 
 .fly-text {
@@ -223,7 +234,7 @@ body {
 }
 
 .create-text {
-    color: #4caf50;
+    color: #1E1E1E;
 }
 
 .hero-buttons {
@@ -255,8 +266,8 @@ body {
     text-transform: uppercase;
     letter-spacing: 1px;
     border-radius: 0;
-    border: 2px solid white;
-    color: white;
+    border: 2px solid #1E1E1E;
+    color: #1E1E1E;
     background: transparent;
     transition: all 0.3s ease;
 }

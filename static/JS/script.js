@@ -63,27 +63,8 @@ function updateActiveNavLink() {
 
 // ===== TYPING EFFECT =====
 function initTypingEffect() {
-    const typingText = document.querySelector('.typing-text');
-    const text = 'Luigi Lattanzio';
-    let index = 0;
-
-    if (typingText) {
-        typingText.textContent = ''; // Parte vuoto
-
-        function typeChar() {
-            if (index <= text.length) {
-                typingText.textContent = text.slice(0, index);
-                index++;
-
-                // Velocità typewriter realistica
-                let speed = 120 + Math.random() * 80; // 120-200ms
-                setTimeout(typeChar, speed);
-            }
-        }
-
-        // Inizia dopo 500ms dal caricamento pagina
-        setTimeout(typeChar, 500);
-    }
+    // L'animazione è gestita interamente dal CSS
+    console.log('Typewriter animation running via CSS');
 }
 
 // ===== TYPING SOUND EFFECT (Simulato) =====
