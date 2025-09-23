@@ -7,8 +7,638 @@
     <title>Luigi Lattanzio - Web Developer & Drone Pilot</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="static/CSS/style.css">
-    <link rel="icon" href="static/CSS/IMG/logo chx.png">
+    <style>
+        /* Stili base per il portfolio */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: #1E1E1E;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+        }
+
+        .custom-navbar {
+            background: rgba(237, 237, 236, 0.95);
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(30, 30, 30, 0.08);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #1E1E1E !important;
+        }
+
+        .navbar-nav .nav-link {
+            color: #1E1E1E !important;
+            font-weight: 500;
+            font-size: 0.95rem;
+            margin: 0 0.5rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #D93222 !important;
+        }
+
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #D93222;
+            transition: width 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .logo-image {
+            height: 40px;
+            width: auto;
+        }
+
+        .hero-section {
+            min-height: 100vh;
+            background: #EDEDEC;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 120px 0 80px;
+        }
+
+        .geometric-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            opacity: 0.4;
+        }
+
+        .shape {
+            position: absolute;
+            background: rgba(217, 50, 34, 0.06);
+            border-radius: 50%;
+        }
+
+        .shape-1 {
+            width: 400px;
+            height: 400px;
+            top: -200px;
+            right: -200px;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .shape-2 {
+            width: 250px;
+            height: 250px;
+            bottom: -125px;
+            left: -125px;
+            animation: float 12s ease-in-out infinite reverse;
+        }
+
+        .shape-3 {
+            width: 180px;
+            height: 180px;
+            top: 40%;
+            right: 15%;
+            animation: float 10s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            33% {
+                transform: translateY(-15px) rotate(60deg);
+            }
+
+            66% {
+                transform: translateY(10px) rotate(120deg);
+            }
+        }
+
+        /* Stili per il testo animato - Rimosso per semplicità */
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            color: #1E1E1E;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #1E1E1E;
+            margin-bottom: 2rem;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        /* Typewriter effect */
+        .typewriter-container {
+            height: 6rem;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .typewriter-text {
+            font-size: 4rem;
+            font-weight: 800;
+            color: #1E1E1E;
+            display: inline-block;
+            position: relative;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1em;
+            background-color: #D93222;
+            margin-left: 5px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            50% {
+                opacity: 1;
+            }
+
+            51%,
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .hero-tagline {
+            margin: 3rem 0;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .code-text,
+        .fly-text,
+        .create-text {
+            font-size: 1.25rem;
+            font-weight: 600;
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideInUp 0.8s ease forwards;
+            letter-spacing: -0.01em;
+            position: relative;
+        }
+
+        .code-text::after,
+        .fly-text::after,
+        .create-text::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            border-radius: 1px;
+        }
+
+        .code-text {
+            color: #1E1E1E;
+            animation-delay: 3s;
+        }
+
+        .code-text::after {
+            background: #1E1E1E;
+        }
+
+        .fly-text {
+            color: #D93222;
+            animation-delay: 3.3s;
+        }
+
+        .fly-text::after {
+            background: #D93222;
+        }
+
+        .create-text {
+            color: #1E1E1E;
+            animation-delay: 3.6s;
+        }
+
+        .create-text::after {
+            background: #1E1E1E;
+        }
+
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-buttons {
+            margin-top: 3.5rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .custom-btn,
+        .custom-btn-outline {
+            padding: 16px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent;
+            letter-spacing: -0.01em;
+            min-width: 160px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .custom-btn {
+            background: #D93222;
+            color: white;
+            box-shadow: 0 4px 12px rgba(217, 50, 34, 0.3);
+        }
+
+        .custom-btn:hover {
+            background: #B8281C;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(217, 50, 34, 0.4);
+            color: white;
+        }
+
+        .custom-btn-outline {
+            background: transparent;
+            border-color: #1E1E1E;
+            color: #1E1E1E;
+        }
+
+        .custom-btn-outline:hover {
+            background: #1E1E1E;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(30, 30, 30, 0.2);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .scroll-arrow {
+            width: 30px;
+            height: 30px;
+            border: 2px solid #D93222;
+            border-top: none;
+            border-right: none;
+            transform: rotate(-45deg);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0) rotate(-45deg);
+            }
+
+            40% {
+                transform: translateY(-10px) rotate(-45deg);
+            }
+
+            60% {
+                transform: translateY(-5px) rotate(-45deg);
+            }
+        }
+
+        .section-padding {
+            padding: 120px 0;
+        }
+
+        .section-header h2 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+            color: #1E1E1E;
+        }
+
+        .section-description {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #6B6B6B;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .section-line {
+            width: 60px;
+            height: 3px;
+            background: #D93222;
+            margin: 24px 0;
+            border-radius: 2px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+
+            .hero-title,
+            .typewriter-text {
+                font-size: 2.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+            }
+
+            .typewriter-container {
+                height: 4rem;
+            }
+
+            .typewriter-text {
+                white-space: normal;
+                line-height: 1.2;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .typewriter-text {
+                font-size: 1.8rem;
+            }
+
+            .typewriter-container {
+                height: 3.5rem;
+            }
+        }
+
+        /* About section styles */
+        .about-image {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .profile-image {
+            max-width: 280px;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(30, 30, 30, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+
+        .lead {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #1E1E1E;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            letter-spacing: -0.01em;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            color: #4A4A4A;
+            line-height: 1.7;
+            font-style: italic;
+            margin-bottom: 3rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .skill-item {
+            text-align: center;
+            padding: 32px 24px;
+            background: white;
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(30, 30, 30, 0.08);
+            box-shadow: 0 4px 12px rgba(30, 30, 30, 0.04);
+        }
+
+        .skill-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(30, 30, 30, 0.12);
+            border-color: rgba(217, 50, 34, 0.2);
+        }
+
+        .skill-item i {
+            font-size: 2.2rem;
+            margin-bottom: 16px;
+            color: #D93222;
+        }
+
+        .skill-item span {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #1E1E1E;
+        }
+
+        /* Services styles */
+        .bg-light {
+            background: #FAFAFA !important;
+        }
+
+        .service-card {
+            background: white;
+            padding: 48px 32px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(30, 30, 30, 0.06);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 100%;
+            border: 1px solid rgba(30, 30, 30, 0.04);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #D93222, #B8281C);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(30, 30, 30, 0.12);
+        }
+
+        .service-icon {
+            width: 88px;
+            height: 88px;
+            background: linear-gradient(135deg, #D93222, #B8281C);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 28px;
+            box-shadow: 0 8px 16px rgba(217, 50, 34, 0.3);
+        }
+
+        .service-icon i {
+            font-size: 2.2rem;
+            color: white;
+        }
+
+        .service-card h4 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #1E1E1E;
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
+        }
+
+        .service-card p {
+            font-size: 1rem;
+            color: #6B6B6B;
+            line-height: 1.6;
+        }
+
+        /* Contact and Footer improvements */
+        .bg-dark {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%) !important;
+        }
+
+        .contact-form .form-control {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            padding: 16px 20px;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-form .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 400;
+        }
+
+        .contact-form .form-control:focus {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: #D93222;
+            box-shadow: 0 0 0 3px rgba(217, 50, 34, 0.15);
+            color: white;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 32px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(8px);
+        }
+
+        .contact-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, #D93222, #B8281C);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            box-shadow: 0 4px 12px rgba(217, 50, 34, 0.3);
+        }
+
+        .contact-icon i {
+            font-size: 1.3rem;
+            color: white;
+        }
+
+        .contact-details h5 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: white;
+        }
+
+        .contact-details p {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #D93222;
+        }
+    </style>
 </head>
 
 <body>
@@ -45,10 +675,13 @@
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-lg-8">
-                    <h1 class="hero-title">
-                        <span class="typing-text"></span>
-                    </h1>
-                    <h2 class="hero-subtitle">Web Developer & Drone Pilot</h2>
+                    <div class="typewriter-container">
+                        <h1 class="typewriter-text" id="typewriter">
+                            <span id="text-content"></span>
+                            <span class="cursor"></span>
+                        </h1>
+                    </div>
+                    <h2 class="hero-subtitle">Creatività che prende il volo nel digitale</h2>
                     <p class="hero-description">
                         Trasformo idee in esperienze digitali straordinarie attraverso codice pulito e creatività aerea.
                     </p>
@@ -75,9 +708,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="about-image">
-                        <div class="image-placeholder">
-                            <img class="profile-image" src="static/CSS/IMG/Logo Gigichx.png" alt="">
-                        </div>
+                        <img class="profile-image" src="static/CSS/IMG/Logo Gigichx.png" alt="Luigi Lattanzio">
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -89,7 +720,7 @@
                         Sono Luigi Lattanzio, un appassionato sviluppatore web e pilota di droni con sede in Puglia.
                         La mia missione è creare esperienze digitali innovative che uniscono tecnologia e creatività.
                     </p>
-                    <p style="font-style: italic;">
+                    <p class="about-text">
                         Con anni di esperienza nel mondo dello sviluppo web e una passione per la fotografia aerea,
                         offro servizi completi che spaziano dalla creazione di siti web moderni e responsive
                         alla produzione di contenuti video e fotografici unici attraverso l'uso di droni professionali.
@@ -136,12 +767,6 @@
                         <h4>Web Development</h4>
                         <p>Sviluppo siti web moderni, responsive e ottimizzati per i motori di ricerca utilizzando le
                             più moderne tecnologie web.</p>
-                        <ul class="service-features">
-                            <li>Siti web responsive</li>
-                            <li>E-commerce</li>
-                            <li>Web applications</li>
-                            <li>SEO optimization</li>
-                        </ul>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4">
@@ -152,12 +777,6 @@
                         <h4>Drone Photography</h4>
                         <p>Servizi di fotografia e videoriprese aeree professionali per eventi, immobili, matrimoni e
                             progetti commerciali.</p>
-                        <ul class="service-features">
-                            <li>Fotografia aerea</li>
-                            <li>Video promozionali</li>
-                            <li>Riprese eventi</li>
-                            <li>Fotografia immobiliare</li>
-                        </ul>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 mb-4">
@@ -168,129 +787,6 @@
                         <h4>Video Editing</h4>
                         <p>Editing professionale di video e contenuti multimediali per creare storie coinvolgenti e di
                             impatto.</p>
-                        <ul class="service-features">
-                            <li>Montaggio video</li>
-                            <li>Color correction</li>
-                            <li>Motion graphics</li>
-                            <li>Post-produzione audio</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="section-padding">
-        <div class="container">
-            <div class="section-header text-center">
-                <h2>Portfolio</h2>
-                <div class="section-line mx-auto"></div>
-                <p class="section-description">
-                    Alcuni dei miei lavori più recenti
-                </p>
-            </div>
-            <div class="portfolio-filters text-center mb-4">
-                <button class="filter-btn active" data-filter="all">Tutti</button>
-                <button class="filter-btn" data-filter="web">Web Development</button>
-                <button class="filter-btn" data-filter="drone">Drone</button>
-                <button class="filter-btn" data-filter="video">Video</button>
-            </div>
-            <div class="row portfolio-grid">
-                <div class="col-lg-4 col-md-6 mb-4 portfolio-item web">
-                    <div class="portfolio-card">
-                        <div class="portfolio-image">
-                            <div class="image-placeholder">
-                                <i class="fas fa-laptop-code"></i>
-                            </div>
-                            <div class="portfolio-overlay">
-                                <div class="portfolio-overlay-content">
-                                    <h5>E-commerce Platform</h5>
-                                    <p>Piattaforma e-commerce completa</p>
-                                    <a href="#" class="btn btn-sm btn-light">Vedi Progetto</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 portfolio-item drone">
-                    <div class="portfolio-card">
-                        <div class="portfolio-image">
-                            <div class="image-placeholder">
-                                <i class="fas fa-mountain"></i>
-                            </div>
-                            <div class="portfolio-overlay">
-                                <div class="portfolio-overlay-content">
-                                    <h5>Riprese Aeree Puglia</h5>
-                                    <p>Video promozionale territorio</p>
-                                    <a href="#" class="btn btn-sm btn-light">Vedi Video</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 portfolio-item web">
-                    <div class="portfolio-card">
-                        <div class="portfolio-image">
-                            <div class="image-placeholder">
-                                <i class="fas fa-mobile-alt"></i>
-                            </div>
-                            <div class="portfolio-overlay">
-                                <div class="portfolio-overlay-content">
-                                    <h5>App Mobile</h5>
-                                    <p>Applicazione mobile responsive</p>
-                                    <a href="#" class="btn btn-sm btn-light">Vedi App</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 portfolio-item video">
-                    <div class="portfolio-card">
-                        <div class="portfolio-image">
-                            <div class="image-placeholder">
-                                <i class="fas fa-play"></i>
-                            </div>
-                            <div class="portfolio-overlay">
-                                <div class="portfolio-overlay-content">
-                                    <h5>Wedding Video</h5>
-                                    <p>Montaggio matrimonio</p>
-                                    <a href="#" class="btn btn-sm btn-light">Vedi Video</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 portfolio-item drone">
-                    <div class="portfolio-card">
-                        <div class="portfolio-image">
-                            <div class="image-placeholder">
-                                <i class="fas fa-building"></i>
-                            </div>
-                            <div class="portfolio-overlay">
-                                <div class="portfolio-overlay-content">
-                                    <h5>Real Estate</h5>
-                                    <p>Fotografia immobiliare aerea</p>
-                                    <a href="#" class="btn btn-sm btn-light">Vedi Gallery</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4 portfolio-item web">
-                    <div class="portfolio-card">
-                        <div class="portfolio-image">
-                            <div class="image-placeholder">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                            <div class="portfolio-overlay">
-                                <div class="portfolio-overlay-content">
-                                    <h5>Dashboard Analytics</h5>
-                                    <p>Piattaforma di analytics</p>
-                                    <a href="#" class="btn btn-sm btn-light">Vedi Demo</a>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -364,13 +860,6 @@
                     </form>
                 </div>
             </div>
-            <div class="text-center mt-5">
-                <div class="hero-tagline">
-                    <!--<span class="code-text">Code.</span>
-                    <span class="fly-text">Fly.</span>
-                    <span class="create-text">Create.</span>-->
-                </div>
-            </div>
         </div>
     </section>
 
@@ -383,11 +872,9 @@
                 </div>
                 <div class="col-md-6 text-md-end">
                     <div class="social-links">
-                        <!--<a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>-->
                         <a href="https://github.com/Gigichx" class="social-link"><i class="fab fa-github"></i></a>
                         <a href="https://www.instagram.com/_luigi_lattanzio_/" class="social-link"><i
                                 class="fab fa-instagram"></i></a>
-                        <!--<a href="#" class="social-link"><i class="fab fa-youtube"></i></a>-->
                     </div>
                 </div>
             </div>
@@ -396,7 +883,93 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
+
+    <script>
+        // Typewriter effect
+        class Typewriter {
+            constructor(element, texts, options = {}) {
+                this.element = element;
+                this.texts = texts;
+                this.speed = options.speed || 100;
+                this.deleteSpeed = options.deleteSpeed || 50;
+                this.pauseTime = options.pauseTime || 2000;
+                this.currentTextIndex = 0;
+                this.currentCharIndex = 0;
+                this.isDeleting = false;
+
+                this.start();
+            }
+
+            start() {
+                this.type();
+            }
+
+            type() {
+                const currentText = this.texts[this.currentTextIndex];
+
+                if (this.isDeleting) {
+                    // Cancellazione
+                    this.element.textContent = currentText.substring(0, this.currentCharIndex - 1);
+                    this.currentCharIndex--;
+
+                    if (this.currentCharIndex === 0) {
+                        this.isDeleting = false;
+                        this.currentTextIndex = (this.currentTextIndex + 1) % this.texts.length;
+                        setTimeout(() => this.type(), 500);
+                        return;
+                    }
+
+                    setTimeout(() => this.type(), this.deleteSpeed);
+                } else {
+                    // Scrittura
+                    this.element.textContent = currentText.substring(0, this.currentCharIndex + 1);
+                    this.currentCharIndex++;
+
+                    if (this.currentCharIndex === currentText.length) {
+                        setTimeout(() => {
+                            this.isDeleting = true;
+                            this.type();
+                        }, this.pauseTime);
+                        return;
+                    }
+
+                    setTimeout(() => this.type(), this.speed);
+                }
+            }
+        }
+
+        // Inizializzazione al caricamento della pagina
+        document.addEventListener('DOMContentLoaded', function () {
+            // Inizializza il typewriter
+            const typewriterElement = document.getElementById('text-content');
+            const texts = [
+                'Ciao, sono Luigi Lattanzio',
+                'Web Developer',
+                'Drone Pilot',
+                'Video Editor'
+            ];
+
+            new Typewriter(typewriterElement, texts, {
+                speed: 80,
+                deleteSpeed: 50,
+                pauseTime: 2500
+            });
+
+            // Smooth scrolling per i link di navigazione
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
