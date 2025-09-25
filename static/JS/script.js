@@ -76,38 +76,35 @@ function initPortfolioFilter() {
 
 // Contact form functionality
 function initContactForm() {
-    const form = document.getElementById('contactForm');
-
-    form.addEventListener('submit', function (e) {
+    const form = document.querySelector('.contact-form');
+    form.addEventListener('submit', function(e) {
         e.preventDefault();
-
-        // Get form data
-        const nome = form.querySelector('[name="nome"]').value;
-        const email = form.querySelector('[name="email"]').value;
-        const oggetto = form.querySelector('[name="oggetto"]').value;
-        const messaggio = form.querySelector('[name="messaggio"]').value;
-
-        // Create mailto URL
-        const subject = encodeURIComponent(`${oggetto} - da ${nome}`);
-        const body = encodeURIComponent(`Nome: ${nome}\nEmail: ${email}\n\nMessaggio:\n${messaggio}`);
-        const mailtoURL = `mailto:lattanzio.luigi.business@gmail.com?subject=${subject}&body=${body}`;
-
-        // Open email client
-        window.location.href = mailtoURL;
-
-        // Show success message
-        const statusDiv = form.querySelector('.form-status');
-        statusDiv.className = 'form-status success';
-        statusDiv.textContent = 'Email client aperto! Completa l\'invio dal tuo client email.';
-        statusDiv.style.display = 'block';
-
-        // Reset form
-        setTimeout(() => {
+        fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+        }).then(response => {
             form.reset();
-            statusDiv.style.display = 'none';
-        }, 5000);
+            showStatus("Messaggio inviato con successo!", true);
+        }).catch(error => {
+            showStatus("Errore nell'invio. Riprova.", false);
+        });
     });
+
+    function showStatus(msg, success) {
+        const statusDiv = form.querySelector('.form-status');
+        statusDiv.textContent = msg;
+        statusDiv.style.display = 'block';
+        statusDiv.className = 'form-status ' + (success ? 'success' : 'error');
+        setTimeout(() => {
+            statusDiv.style.display = 'none';
+        }, 4000);
+    }
 }
+document.addEventListener('DOMContentLoaded', function () {
+    initContactForm();
+    // ...altre inizializzazioni
+});
 
 // Initialize everything
 document.addEventListener('DOMContentLoaded', function () {
@@ -146,3 +143,59 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+// React component for Portfolio Page
+// Assuming React and ReactDOM are loaded in the HTML
+
+/*const { useState } = React;
+
+function PortfolioPage() {
+    const [files, setFiles] = useState([]);
+
+    const handleUpload = (event) => {
+        const uploadedFiles = Array.from(event.target.files).map(file => ({
+            url: URL.createObjectURL(file),
+            name: file.name,
+            type: file.type
+        }));
+        setFiles(prevFiles => [...prevFiles, ...uploadedFiles]);
+    };
+
+    return (
+        <div>
+            <h2 className="mb-4">Portfolio Creativi</h2>
+            <div className="mb-3">
+                <label htmlFor="file-upload" className="btn btn-primary">
+                    Carica Contenuti
+                </label>
+                <input
+                    id="file-upload"
+                    type="file"
+                    multiple
+                    accept="image/*,video/*"
+                    onChange={handleUpload}
+                    style={{ display: 'none' }}
+                />
+            </div>
+
+            {files.length === 0 ? (
+                <p>Nessun contenuto caricato. Usa il bottone sopra per aggiungere i tuoi lavori.</p>
+            ) : (
+                <div className="row">
+                    {files.map((file, index) => (
+                        <div key={index} className="col-md-4 mb-3">
+                            {file.type.startsWith('image') ? (
+                                <img src={file.url} alt={file.name} className="img-fluid rounded" />
+                            ) : (
+                                <video controls className="img-fluid rounded" src={file.url} />
+                            )}
+                            <p className="mt-2">{file.name}</p>
+                        </div>
+                    ))}
+                </div>
+            )}
+        </div>
+    );
+}
+
+ReactDOM.createRoot(document.getElementById('react-root')).render(<PortfolioPage />);*/
