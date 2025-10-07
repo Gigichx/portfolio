@@ -1,513 +1,1004 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luigi Lattanzio - Web Developer & Drone Pilot</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link rel="icon" type="image/png" href="static/CSS/IMG/logo chx.png">
-
-    <link rel="stylesheet" href="static/CSS/style.css">
+    <meta name="description" content="Portfolio professionale di fotografia e videografia aerea con drone. Servizi per real estate, eventi, ispezioni tecniche e mappatura.">
+    <meta name="keywords" content="fotografia drone, video aerei, real estate, ispezioni drone, eventi, mappatura aerea">
+    <meta name="author" content="Drone Photography Pro">
+    <title>Drone Photography Pro - Portfolio Professionale</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="static/CSS/stile.css">
 </head>
-
 <body>
-    <!-- 1. Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
         <div class="container">
-            <a class="navbar-brand" href="#home">
+            <div class="nav-wrapper">
                 <div class="logo">
-                    <img src="static/CSS/IMG/Logo Gigichx.png" alt="Logo" class="logo-image">
+                    <i class="fas fa-drone"></i>
+                    <span>Drone<span class="gradient-text">Pro</span></span>
                 </div>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">Chi Sono</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#services">Servizi</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contact">Contatti</a></li>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">Chi Sono</a></li>
+                    <li><a href="#services" class="nav-link">Servizi</a></li>
+                    <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                    <li><a href="#testimonials" class="nav-link">Recensioni</a></li>
+                    <li><a href="#contact" class="nav-link">Contatti</a></li>
                 </ul>
+                
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </div>
     </nav>
 
-    <!-- 2. Hero Section -->
-    <section id="home" class="hero-section">
-        <div class="geometric-bg">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-            <div class="shape shape-3"></div>
-        </div>
-        <div class="container h-100">
-            <div class="row h-100 align-items-center">
-                <div class="col-lg-8">
-                    <div class="typewriter-container">
-                        <h1 class="typewriter-text" id="typewriter">
-                            <span id="text-content"></span>
-                            <span class="cursor"></span>
-                        </h1>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-background"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <span class="hero-subtitle animate-fadeIn">Fotografia & Videografia Aerea</span>
+                    <h1 class="hero-title animate-slideUp">
+                        Cattura il Mondo da una <span class="gradient-text">Nuova Prospettiva</span>
+                    </h1>
+                    <p class="hero-description animate-slideUp">
+                        Servizi professionali di fotografia e videografia con drone per real estate, 
+                        eventi, ispezioni tecniche e molto altro. Certificato ENAC e completamente assicurato.
+                    </p>
+                    <div class="hero-buttons animate-slideUp">
+                        <a href="#portfolio" class="btn btn-primary">
+                            <span>Vedi Portfolio</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="#contact" class="btn btn-secondary">
+                            <span>Richiedi Preventivo</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </a>
+                    </div>
+                    <div class="hero-stats animate-fadeIn">
+                        <div class="stat-item">
+                            <i class="fas fa-camera"></i>
+                            <div class="stat-content">
+                                <span class="stat-number" data-target="500">0</span>
+                                <span class="stat-label">Progetti Completati</span>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-users"></i>
+                            <div class="stat-content">
+                                <span class="stat-number" data-target="150">0</span>
+                                <span class="stat-label">Clienti Soddisfatti</span>
+                            </div>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-award"></i>
+                            <div class="stat-content">
+                                <span class="stat-number" data-target="5">0</span>
+                                <span class="stat-label">Anni di Esperienza</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="scroll-indicator">
+            <span>Scorri</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
     </section>
 
-    <!-- 3. Services Section -->
-    <section id="services" class="section-padding bg-light">
+    <!-- About Section -->
+    <section class="about" id="about">
         <div class="container">
-            <div class="section-header text-center">
-                <h2>I Miei Servizi</h2>
-                <div class="section-line mx-auto"></div>
+            <div class="section-header">
+                <span class="section-subtitle">Chi Sono</span>
+                <h2 class="section-title">Passione per il Volo e la <span class="gradient-text">Fotografia</span></h2>
                 <p class="section-description">
-                    Servizi professionali per trasformare le tue idee in realtà digitale
+                    Pilota professionista certificato ENAC con anni di esperienza nel settore della fotografia aerea
                 </p>
             </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-globe"></i>
+            
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=600&h=800&fit=crop" alt="Pilota drone professionista" loading="lazy">
+                    <div class="about-image-overlay">
+                        <div class="certification-badge">
+                            <i class="fas fa-certificate"></i>
+                            <span>Certificato ENAC</span>
                         </div>
-                        <h4>Web Development</h4>
-                        <p>Sviluppo siti web moderni, responsive e ottimizzati per i motori di ricerca utilizzando le
-                            più moderne tecnologie web.</p>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-camera-retro"></i>
+                
+                <div class="about-text">
+                    <h3>Esperienza e Professionalità al Tuo Servizio</h3>
+                    <p>
+                        Sono un pilota di droni professionista certificato ENAC con oltre 5 anni di esperienza 
+                        nel settore della fotografia e videografia aerea. La mia passione per il volo e la 
+                        fotografia mi ha portato a realizzare progetti per clienti in tutta Italia.
+                    </p>
+                    <p>
+                        Utilizzo equipaggiamento professionale di ultima generazione per garantire risultati 
+                        di altissima qualità. Ogni progetto viene curato nei minimi dettagli, dalla pianificazione 
+                        del volo alla post-produzione delle immagini e dei video.
+                    </p>
+                    
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Certificazione ENAC A1-A3</span>
                         </div>
-                        <h4>Drone Photography</h4>
-                        <p>Servizi di fotografia e videoriprese aeree professionali per eventi, immobili, matrimoni e
-                            progetti commerciali.</p>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Assicurazione RC Professionale</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Equipaggiamento Professionale</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Post-Produzione Avanzata</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skills">
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">Fotografia Aerea</span>
+                                <span class="skill-percentage">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="95"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">Video Cinematici</span>
+                                <span class="skill-percentage">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="90"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">Post-Produzione</span>
+                                <span class="skill-percentage">92%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="92"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">Mappatura 3D</span>
+                                <span class="skill-percentage">88%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-progress="88"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="#contact" class="btn btn-primary">
+                        <span>Contattami</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Servizi</span>
+                <h2 class="section-title">Cosa Posso Fare per <span class="gradient-text">Te</span></h2>
+                <p class="section-description">
+                    Soluzioni professionali per ogni esigenza di ripresa aerea
+                </p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3 class="service-title">Fotografia Aerea</h3>
+                    <p class="service-description">
+                        Scatti professionali ad alta risoluzione per catturare paesaggi, 
+                        architetture e panorami mozzafiato da prospettive uniche.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Foto fino a 48MP</li>
+                        <li><i class="fas fa-check"></i> Formato RAW e JPEG</li>
+                        <li><i class="fas fa-check"></i> Post-produzione inclusa</li>
+                    </ul>
+                    <a href="#contact" class="service-link">
+                        <span>Scopri di più</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="service-card featured">
+                    <div class="featured-badge">Più Richiesto</div>
+                    <div class="service-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3 class="service-title">Video Cinematici</h3>
+                    <p class="service-description">
+                        Riprese video aeree in 4K e 6K per spot pubblicitari, 
+                        documentari e contenuti promozionali di alta qualità.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Video fino a 6K</li>
+                        <li><i class="fas fa-check"></i> 60fps per slow motion</li>
+                        <li><i class="fas fa-check"></i> Color grading professionale</li>
+                    </ul>
+                    <a href="#contact" class="service-link">
+                        <span>Scopri di più</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 class="service-title">Real Estate</h3>
+                    <p class="service-description">
+                        Servizi dedicati al settore immobiliare per valorizzare 
+                        proprietà residenziali e commerciali con riprese aeree.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Tour virtuali 360°</li>
+                        <li><i class="fas fa-check"></i> Foto e video esterni</li>
+                        <li><i class="fas fa-check"></i> Planimetrie aeree</li>
+                    </ul>
+                    <a href="#contact" class="service-link">
+                        <span>Scopri di più</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hard-hat"></i>
+                    </div>
+                    <h3 class="service-title">Ispezioni Tecniche</h3>
+                    <p class="service-description">
+                        Ispezioni aeree per verifiche strutturali, monitoraggio 
+                        cantieri e controllo di impianti industriali in sicurezza.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Termografia aerea</li>
+                        <li><i class="fas fa-check"></i> Report dettagliati</li>
+                        <li><i class="fas fa-check"></i> Analisi strutturali</li>
+                    </ul>
+                    <a href="#contact" class="service-link">
+                        <span>Scopri di più</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3 class="service-title">Eventi</h3>
+                    <p class="service-description">
+                        Copertura aerea di eventi sportivi, matrimoni, concerti 
+                        e manifestazioni per creare ricordi indimenticabili.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Riprese live</li>
+                        <li><i class="fas fa-check"></i> Highlight video</li>
+                        <li><i class="fas fa-check"></i> Streaming aereo</li>
+                    </ul>
+                    <a href="#contact" class="service-link">
+                        <span>Scopri di più</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3 class="service-title">Mappatura</h3>
+                    <p class="service-description">
+                        Rilievi fotogrammetrici, modelli 3D e ortofoto per 
+                        topografia, agricoltura di precisione e GIS.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Modelli 3D</li>
+                        <li><i class="fas fa-check"></i> Ortofoto georeferenziate</li>
+                        <li><i class="fas fa-check"></i> Calcolo volumetrie</li>
+                    </ul>
+                    <a href="#contact" class="service-link">
+                        <span>Scopri di più</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Portfolio</span>
+                <h2 class="section-title">I Miei <span class="gradient-text">Progetti</span></h2>
+                <p class="section-description">
+                    Una selezione dei migliori lavori realizzati per i miei clienti
+                </p>
+            </div>
+            
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">
+                    <i class="fas fa-th"></i>
+                    <span>Tutti</span>
+                </button>
+                <button class="filter-btn" data-filter="aerial">
+                    <i class="fas fa-mountain"></i>
+                    <span>Fotografia Aerea</span>
+                </button>
+                <button class="filter-btn" data-filter="video">
+                    <i class="fas fa-video"></i>
+                    <span>Video</span>
+                </button>
+                <button class="filter-btn" data-filter="realestate">
+                    <i class="fas fa-home"></i>
+                    <span>Real Estate</span>
+                </button>
+                <button class="filter-btn" data-filter="events">
+                    <i class="fas fa-calendar"></i>
+                    <span>Eventi</span>
+                </button>
+            </div>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="aerial">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop" alt="Paesaggio montano aereo" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-content">
+                                <h3 class="portfolio-title">Paesaggio Alpino</h3>
+                                <p class="portfolio-category">
+                                    <i class="fas fa-mountain"></i>
+                                    <span>Fotografia Aerea</span>
+                                </p>
+                                <div class="portfolio-links">
+                                    <a href="#" class="portfolio-link" aria-label="Visualizza progetto">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="#" class="portfolio-link" aria-label="Link esterno">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-video"></i>
+                
+                <div class="portfolio-item" data-category="video">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800&h=600&fit=crop" alt="Video cinematico città" loading="lazy">
+                        <div class="video-badge">
+                            <i class="fas fa-play"></i>
                         </div>
-                        <h4>Video Editing</h4>
-                        <p>Editing professionale di video e contenuti multimediali per creare storie coinvolgenti e di
-                            impatto.</p>
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-content">
+                                <h3 class="portfolio-title">City Skyline</h3>
+                                <p class="portfolio-category">
+                                    <i class="fas fa-video"></i>
+                                    <span>Video Cinematico</span>
+                                </p>
+                                <div class="portfolio-links">
+                                    <a href="#" class="portfolio-link" aria-label="Visualizza progetto">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="#" class="portfolio-link" aria-label="Link esterno">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="realestate">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop" alt="Villa di lusso" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-content">
+                                <h3 class="portfolio-title">Villa di Lusso</h3>
+                                <p class="portfolio-category">
+                                    <i class="fas fa-home"></i>
+                                    <span>Real Estate</span>
+                                </p>
+                                <div class="portfolio-links">
+                                    <a href="#" class="portfolio-link" aria-label="Visualizza progetto">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="#" class="portfolio-link" aria-label="Link esterno">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="aerial">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800&h=600&fit=crop" alt="Costa marina" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-content">
+                                <h3 class="portfolio-title">Costa Mediterranea</h3>
+                                <p class="portfolio-category">
+                                    <i class="fas fa-mountain"></i>
+                                    <span>Fotografia Aerea</span>
+                                </p>
+                                <div class="portfolio-links">
+                                    <a href="#" class="portfolio-link" aria-label="Visualizza progetto">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="#" class="portfolio-link" aria-label="Link esterno">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="events">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&h=600&fit=crop" alt="Matrimonio aereo" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-content">
+                                <h3 class="portfolio-title">Matrimonio da Sogno</h3>
+                                <p class="portfolio-category">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>Eventi</span>
+                                </p>
+                                <div class="portfolio-links">
+                                    <a href="#" class="portfolio-link" aria-label="Visualizza progetto">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="#" class="portfolio-link" aria-label="Link esterno">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="realestate">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&h=600&fit=crop" alt="Casa moderna" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-content">
+                                <h3 class="portfolio-title">Casa Moderna</h3>
+                                <p class="portfolio-category">
+                                    <i class="fas fa-home"></i>
+                                    <span>Real Estate</span>
+                                </p>
+                                <div class="portfolio-links">
+                                    <a href="#" class="portfolio-link" aria-label="Visualizza progetto">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="#" class="portfolio-link" aria-label="Link esterno">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="video">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1511576661531-b34d7da5d0bb?w=800&h=600&fit=crop" alt="Video promozionale" loading="lazy">
+                        <div class="video-badge">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-content">
+                                <h3 class="portfolio-title">Promo Aziendale</h3>
+                                <p class="portfolio-category">
+                                    <i class="fas fa-video"></i>
+                                    <span>Video Cinematico</span>
+                                </p>
+                                <div class="portfolio-links">
+                                    <a href="#" class="portfolio-link" aria-label="Visualizza progetto">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="#" class="portfolio-link" aria-label="Link esterno">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="aerial">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=600&fit=crop" alt="Foresta dall'alto" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-content">
+                                <h3 class="portfolio-title">Foresta Incantata</h3>
+                                <p class="portfolio-category">
+                                    <i class="fas fa-mountain"></i>
+                                    <span>Fotografia Aerea</span>
+                                </p>
+                                <div class="portfolio-links">
+                                    <a href="#" class="portfolio-link" aria-label="Visualizza progetto">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="#" class="portfolio-link" aria-label="Link esterno">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="events">
+                    <div class="portfolio-image">
+                        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=800&h=600&fit=crop" alt="Evento sportivo" loading="lazy">
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-content">
+                                <h3 class="portfolio-title">Evento Sportivo</h3>
+                                <p class="portfolio-category">
+                                    <i class="fas fa-calendar"></i>
+                                    <span>Eventi</span>
+                                </p>
+                                <div class="portfolio-links">
+                                    <a href="#" class="portfolio-link" aria-label="Visualizza progetto">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                    <a href="#" class="portfolio-link" aria-label="Link esterno">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="portfolio-cta">
+                <p>Vuoi vedere altri progetti?</p>
+                <a href="#contact" class="btn btn-primary">
+                    <span>Contattami per il Portfolio Completo</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Recensioni</span>
+                <h2 class="section-title">Cosa Dicono i Miei <span class="gradient-text">Clienti</span></h2>
+                <p class="section-description">
+                    La soddisfazione dei clienti è la mia priorità
+                </p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Professionalità eccezionale! Le riprese aeree della nostra villa hanno 
+                        superato ogni aspettativa. Grazie a queste foto siamo riusciti a vendere 
+                        l'immobile in tempi record. Consigliatissimo!"
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/100?img=12" alt="Marco Rossi" loading="lazy">
+                        <div class="author-info">
+                            <h4>Marco Rossi</h4>
+                            <span>Agenzia Immobiliare Elite</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Il video del nostro matrimonio è semplicemente magico. Le riprese aeree 
+                        hanno aggiunto un tocco cinematografico che ci ha lasciati senza parole. 
+                        Un ricordo che custodiremo per sempre!"
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/100?img=45" alt="Laura Bianchi" loading="lazy">
+                        <div class="author-info">
+                            <h4>Laura & Giuseppe</h4>
+                            <span>Sposi 2024</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Abbiamo utilizzato i servizi per l'ispezione del nostro impianto fotovoltaico. 
+                        Rapidità, precisione e report dettagliato. Un servizio indispensabile per la 
+                        manutenzione delle nostre strutture."
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/100?img=33" alt="Andrea Verdi" loading="lazy">
+                        <div class="author-info">
+                            <h4>Andrea Verdi</h4>
+                            <span>Green Energy Solutions</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Le riprese aeree del nostro evento aziendale hanno dato un valore aggiunto 
+                        incredibile al video promozionale. Qualità professionale e grande attenzione 
+                        ai dettagli. Collaborazione perfetta!"
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/100?img=27" alt="Francesca Neri" loading="lazy">
+                        <div class="author-info">
+                            <h4>Francesca Neri</h4>
+                            <span>Marketing Manager - TechCorp</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Servizio di mappatura impeccabile per il nostro progetto di riqualificazione 
+                        urbana. I modelli 3D e le ortofoto hanno facilitato enormemente la pianificazione. 
+                        Competenza e tecnologia al top!"
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/100?img=68" alt="Roberto Colombo" loading="lazy">
+                        <div class="author-info">
+                            <h4>Roberto Colombo</h4>
+                            <span>Studio Architettura Moderna</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Foto spettacolari del nostro resort! Le immagini aeree hanno trasformato 
+                        completamente la nostra comunicazione online. Da quando le usiamo sul sito 
+                        le prenotazioni sono aumentate del 40%!"
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://i.pravatar.cc/100?img=41" alt="Silvia Marino" loading="lazy">
+                        <div class="author-info">
+                            <h4>Silvia Marino</h4>
+                            <span>Direttrice - Paradise Resort</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 4. Portfolio Section -->
-    <section id="portfolio" class="section-padding">
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
         <div class="container">
-            <div class="section-header text-center">
-                <h2>Portfolio</h2>
-                <div class="section-line mx-auto"></div>
+            <div class="section-header">
+                <span class="section-subtitle">Contatti</span>
+                <h2 class="section-title">Iniziamo a Lavorare <span class="gradient-text">Insieme</span></h2>
                 <p class="section-description">
-                    Alcuni dei miei lavori più recenti
+                    Contattami per un preventivo gratuito o per discutere del tuo progetto
                 </p>
             </div>
-            <div class="portfolio-filters text-center mb-4">
-                <button class="filter-btn active" data-filter="all">Tutti</button>
-                <button class="filter-btn" data-filter="web">Web Development</button>
-                <button class="filter-btn" data-filter="drone">Drone</button>
-                <button class="filter-btn" data-filter="video">Video</button>
-            </div>
-            <div class="row portfolio-grid">
-                <!-- 5. Web Development Projects -->
-                <div class="col-lg-4 col-md-6 mb-4 portfolio-item web">
-                    <div class="portfolio-card">
-                        <div class="portfolio-image">
-                            <img src="static/CSS/IMG/Progetto1Web.png" alt="E-commerce Platform" class="img-fluid">
-                            <div class="portfolio-overlay">
-                                <div class="portfolio-overlay-content">
-                                    <h5>Generatore Random di CV</h5>
-                                    <p>Generatore di curriculum vitae personalizzati</p>
-                                    <div class="portfolio-links">
-                                        <a href="#" class="btn btn-sm btn-light me-2" data-bs-toggle="modal"
-                                            data-bs-target="#portfolioModal1">
-                                            <i class="fas fa-eye"></i> Dettagli
-                                        </a>
-                                        <a href="https://gigichx.github.io/random-cv/"
-                                            class="btn btn-sm btn-outline-light">
-                                            <i class="fas fa-external-link-alt"></i> Live Demo
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 mb-4 portfolio-item web">
-                    <div class="portfolio-card">
-                        <div class="portfolio-image">
-                            <img src="https://via.placeholder.com/400x300/EDEDEC/1E1E1E?text=Sostituisci+con+la+tua+immagine"
-                                alt="Corporate Website" class="img-fluid">
-                            <div class="portfolio-overlay">
-                                <div class="portfolio-overlay-content">
-                                    <h5>Sito Web Corporate</h5>
-                                    <p>Website aziendale responsive</p>
-                                    <div class="portfolio-links">
-                                        <a href="#" class="btn btn-sm btn-light me-2" data-bs-toggle="modal"
-                                            data-bs-target="#portfolioModal2">
-                                            <i class="fas fa-eye"></i> Dettagli
-                                        </a>
-                                        <a href="#" class="btn btn-sm btn-outline-light">
-                                            <i class="fas fa-external-link-alt"></i> Live Demo
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 mb-4 portfolio-item web">
-                    <div class="portfolio-card">
-                        <div class="portfolio-image">
-                            <img src="https://via.placeholder.com/400x300/EDEDEC/1E1E1E?text=Sostituisci+con+la+tua+immagine"
-                                alt="Dashboard App" class="img-fluid">
-                            <div class="portfolio-overlay">
-                                <div class="portfolio-overlay-content">
-                                    <h5>Dashboard Analytics</h5>
-                                    <p>Piattaforma di analytics</p>
-                                    <div class="portfolio-links">
-                                        <a href="#" class="btn btn-sm btn-light me-2" data-bs-toggle="modal"
-                                            data-bs-target="#portfolioModal3">
-                                            <i class="fas fa-eye"></i> Dettagli
-                                        </a>
-                                        <a href="#" class="btn btn-sm btn-outline-light">
-                                            <i class="fas fa-external-link-alt"></i> Live Demo
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 6. Drone Projects -->
-                <!--<div class="col-lg-4 col-md-6 mb-4 portfolio-item drone">
-                    <div class="portfolio-card">
-                        <div class="portfolio-image">
-                            <img src="https://via.placeholder.com/400x300/EDEDEC/D93222?text=Sostituisci+con+la+tua+immagine"
-                                alt="Aerial Photography" class="img-fluid">
-                            <div class="portfolio-overlay">
-                                <div class="portfolio-overlay-content">
-                                    <h5>Riprese Aeree Puglia</h5>
-                                    <p>Video promozionale territorio</p>
-                                    <div class="portfolio-links">
-                                        <a href="#" class="btn btn-sm btn-light me-2" data-bs-toggle="modal"
-                                            data-bs-target="#portfolioModal4">
-                                            <i class="fas fa-eye"></i> Dettagli
-                                        </a>
-                                        <a href="#" class="btn btn-sm btn-outline-light">
-                                            <i class="fas fa-play"></i> Guarda Video
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>-->
-
-                <!-- 7. Video Projects -->
-                <!--<div class="col-lg-4 col-md-6 mb-4 portfolio-item video">
-                    <div class="portfolio-card">
-                        <div class="portfolio-image">
-                            <img src="https://via.placeholder.com/400x300/EDEDEC/6B6B6B?text=Sostituisci+con+la+tua+immagine"
-                                alt="Wedding Video" class="img-fluid">
-                            <div class="portfolio-overlay">
-                                <div class="portfolio-overlay-content">
-                                    <h5>Wedding Video</h5>
-                                    <p>Montaggio matrimonio cinematografico</p>
-                                    <div class="portfolio-links">
-                                        <a href="#" class="btn btn-sm btn-light me-2" data-bs-toggle="modal"
-                                            data-bs-target="#portfolioModal6">
-                                            <i class="fas fa-eye"></i> Dettagli
-                                        </a>
-                                        <a href="#" class="btn btn-sm btn-outline-light">
-                                            <i class="fas fa-play"></i> Guarda Video
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>-->
-    </section>
-
-    <!-- 8. Contact Section -->
-    <section id="contact" class="section-padding bg-dark text-white">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto text-center">
-                    <div class="section-header">
-                        <h2>Contattami</h2>
-                        <div class="section-line mx-auto"></div>
-                        <p class="section-description">
-                            Hai un progetto in mente? Parliamone insieme!
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="contact-info">
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Informazioni di Contatto</h3>
+                    <p>
+                        Sono sempre disponibile per discutere nuovi progetti e opportunità di collaborazione. 
+                        Compila il form o contattami direttamente attraverso i canali qui sotto.
+                    </p>
+                    
+                    <div class="contact-details">
                         <div class="contact-item">
                             <div class="contact-icon">
                                 <i class="fas fa-envelope"></i>
                             </div>
-                            <div class="contact-details">
-                                <h5>Email</h5>
-                                <p>lattanzio.luigi.business@gmail.com</p>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <a href="mailto:info@dronepro.it">info@dronepro.it</a>
                             </div>
                         </div>
+                        
                         <div class="contact-item">
                             <div class="contact-icon">
                                 <i class="fas fa-phone"></i>
                             </div>
-                            <div class="contact-details">
-                                <h5>Telefono</h5>
-                                <p>+39 3714774763</p>
+                            <div class="contact-text">
+                                <h4>Telefono</h4>
+                                <a href="tel:+393331234567">+39 333 123 4567</a>
                             </div>
                         </div>
+                        
                         <div class="contact-item">
                             <div class="contact-icon">
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
-                            <div class="contact-details">
-                                <h5>Posizione</h5>
-                                <p>Bari, Puglia, Italia</p>
+                            <div class="contact-text">
+                                <h4>Indirizzo</h4>
+                                <p>Milano, Italia<br>Servizi in tutta Italia</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Orari</h4>
+                                <p>Lun - Ven: 9:00 - 18:00<br>Sab: Su appuntamento</p>
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="social-links">
+                        <h4>Seguimi sui Social</h4>
+                        <div class="social-icons">
+                            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-lg-6">
-                    <form class="contact-form" id="contactForm" action="mailto:lattanzio.luigi.business@gmail.com"
-                        method="post" enctype="text/plain">
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <input type="text" name="nome" class="form-control" placeholder="Nome" required>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <input type="email" name="email" class="form-control" placeholder="Email" required>
-                            </div>
+                
+                <form class="contact-form" id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Nome Completo *</label>
+                            <input type="text" id="name" name="name" required>
+                            <span class="form-error"></span>
                         </div>
-                        <div class="mb-3">
-                            <input type="text" name="oggetto" class="form-control" placeholder="Oggetto" required>
+                        
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required>
+                            <span class="form-error"></span>
                         </div>
-                        <div class="mb-3">
-                            <textarea name="messaggio" class="form-control" rows="5" placeholder="Il tuo messaggio..."
-                                required></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Telefono</label>
+                            <input type="tel" id="phone" name="phone">
+                            <span class="form-error"></span>
                         </div>
-                        <button type="submit" class="btn btn-primary custom-btn w-100">
-                            <span class="btn-text">Invia Messaggio</span>
-                            <span class="btn-loading" style="display: none;">
-                                <i class="fas fa-spinner fa-spin"></i> Invio in corso...
+                        
+                        <div class="form-group">
+                            <label for="service">Servizio Richiesto *</label>
+                            <select id="service" name="service" required>
+                                <option value="">Seleziona un servizio</option>
+                                <option value="fotografia">Fotografia Aerea</option>
+                                <option value="video">Video Cinematici</option>
+                                <option value="realestate">Real Estate</option>
+                                <option value="ispezioni">Ispezioni Tecniche</option>
+                                <option value="eventi">Eventi</option>
+                                <option value="mappatura">Mappatura</option>
+                                <option value="altro">Altro</option>
+                            </select>
+                            <span class="form-error"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Messaggio *</label>
+                        <textarea id="message" name="message" rows="6" required></textarea>
+                        <span class="form-error"></span>
+                    </div>
+                    
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="privacy" name="privacy" required>
+                            <span class="checkbox-custom"></span>
+                            <span class="checkbox-text">
+                                Accetto la <a href="#" target="_blank">Privacy Policy</a> e autorizzo il trattamento dei miei dati *
                             </span>
-                        </button>
-                        <div class="form-status mt-3" style="display: none;"></div>
-                    </form>
-                </div>
+                        </label>
+                        <span class="form-error"></span>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-submit">
+                        <span>Invia Richiesta</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
             </div>
         </div>
     </section>
 
-    <!-- 9. Footer -->
-    <footer class="bg-dark text-white py-3">
+    <!-- Footer -->
+    <footer class="footer">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <p class="mb-0">&copy; 2024 Luigi Lattanzio. Tutti i diritti riservati.</p>
-                </div>
-                <div class="col-md-6 text-md-end">
-                    <div class="social-links">
-                        <a href="https://github.com/Gigichx" class="social-link"><i class="fab fa-github"></i></a>
-                        <a href="https://www.instagram.com/_luigi_lattanzio_/" class="social-link"><i
-                                class="fab fa-instagram"></i></a>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-drone"></i>
+                        <span>Drone<span class="gradient-text">Pro</span></span>
+                    </div>
+                    <p class="footer-description">
+                        Servizi professionali di fotografia e videografia aerea con drone. 
+                        Certificato ENAC e completamente assicurato.
+                    </p>
+                    <div class="footer-certifications">
+                        <div class="cert-badge">
+                            <i class="fas fa-certificate"></i>
+                            <span>ENAC A1-A3</span>
+                        </div>
+                        <div class="cert-badge">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>RC Assicurato</span>
+                        </div>
                     </div>
                 </div>
+                
+                <div class="footer-section">
+                    <h4>Link Rapidi</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">Chi Sono</a></li>
+                        <li><a href="#services">Servizi</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#testimonials">Recensioni</a></li>
+                        <li><a href="#contact">Contatti</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Servizi</h4>
+                    <ul class="footer-links">
+                        <li><a href="#services">Fotografia Aerea</a></li>
+                        <li><a href="#services">Video Cinematici</a></li>
+                        <li><a href="#services">Real Estate</a></li>
+                        <li><a href="#services">Ispezioni Tecniche</a></li>
+                        <li><a href="#services">Eventi</a></li>
+                        <li><a href="#services">Mappatura</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Newsletter</h4>
+                    <p>Iscriviti per ricevere aggiornamenti e offerte esclusive</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="La tua email" required>
+                        <button type="submit" aria-label="Iscriviti">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                    <div class="footer-social">
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <span>•</span>
+                    <a href="#">Cookie Policy</a>
+                    <span>•</span>
+                    <a href="#">Termini di Servizio</a>
+                </div>
+                <p class="footer-copyright">
+                    © 2025 DronePro. Tutti i diritti riservati. | P.IVA: 12345678901
+                </p>
             </div>
         </div>
     </footer>
 
-    <!-- 10. Portfolio Modals -->
-    <div class="modal fade" id="portfolioModal1" tabindex="-1" aria-labelledby="portfolioModal1Label"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="portfolioModal1Label">E-commerce Platform</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <img src="https://via.placeholder.com/800x400/EDEDEC/1E1E1E?text=Sostituisci+con+le+tue+immagini+del+progetto"
-                        alt="E-commerce Platform" class="img-fluid mb-3">
-                    <h6>Descrizione del Progetto</h6>
-                    <p>Inserisci qui la descrizione dettagliata del tuo progetto e-commerce. Spiega le tecnologie
-                        utilizzate, le sfide affrontate e i risultati ottenuti.</p>
-                    <h6>Tecnologie Utilizzate</h6>
-                    <p><span class="badge bg-primary me-2">HTML</span><span
-                            class="badge bg-primary me-2">CSS</span><span
-                            class="badge bg-primary me-2">JavaScript</span></p>
-                </div>
-                <div class="modal-footer">
-                    <a href="#" class="btn btn-primary">Visita il Sito</a>
-                    <a href="#" class="btn btn-outline-secondary">GitHub</a>
-                </div>
-            </div>
-        </div>
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Torna su">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Notification Toast -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span class="notification-message"></span>
     </div>
 
-    <div class="modal fade" id="portfolioModal2" tabindex="-1" aria-labelledby="portfolioModal2Label"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="portfolioModal2Label">Sito Web Corporate</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <img src="https://via.placeholder.com/800x400/EDEDEC/1E1E1E?text=Sostituisci+con+le+tue+immagini+del+progetto"
-                        alt="Corporate Website" class="img-fluid mb-3">
-                    <h6>Descrizione del Progetto</h6>
-                    <p>Descrivi qui il sito web aziendale che hai creato. Includi dettagli su design, funzionalità e
-                        obiettivi raggiunti.</p>
-                    <h6>Tecnologie Utilizzate</h6>
-                    <p><span class="badge bg-primary me-2">HTML5</span><span
-                            class="badge bg-primary me-2">CSS3</span><span
-                            class="badge bg-primary me-2">JavaScript</span><span
-                            class="badge bg-primary">Bootstrap</span></p>
-                </div>
-                <div class="modal-footer">
-                    <a href="#" class="btn btn-primary">Visita il Sito</a>
-                    <a href="#" class="btn btn-outline-secondary">GitHub</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="portfolioModal3" tabindex="-1" aria-labelledby="portfolioModal3Label"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="portfolioModal3Label">Dashboard Analytics</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <img src="https://via.placeholder.com/800x400/EDEDEC/1E1E1E?text=Sostituisci+con+le+tue+immagini+del+progetto"
-                        alt="Dashboard Analytics" class="img-fluid mb-3">
-                    <h6>Descrizione del Progetto</h6>
-                    <p>Spiega la dashboard di analytics che hai sviluppato, le metriche visualizzate e l'esperienza
-                        utente creata.</p>
-                    <h6>Tecnologie Utilizzate</h6>
-                    <p><span class="badge bg-primary me-2">React</span><span
-                            class="badge bg-primary me-2">D3.js</span><span
-                            class="badge bg-primary me-2">Express</span><span class="badge bg-primary">PostgreSQL</span>
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <a href="#" class="btn btn-primary">Demo Live</a>
-                    <a href="#" class="btn btn-outline-secondary">GitHub</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="portfolioModal4" tabindex="-1" aria-labelledby="portfolioModal4Label"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="portfolioModal4Label">Riprese Aeree Puglia</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <img src="https://via.placeholder.com/800x400/EDEDEC/D93222?text=Sostituisci+con+le+tue+foto+aeree"
-                        alt="Aerial Photography" class="img-fluid mb-3">
-                    <h6>Descrizione del Progetto</h6>
-                    <p>Racconta il tuo progetto di riprese aeree in Puglia. Includi informazioni sui droni utilizzati,
-                        le location e l'impatto visivo ottenuto.</p>
-                    <h6>Attrezzature Utilizzate</h6>
-                    <p><span class="badge bg-danger me-2">DJI Mavic Pro</span><span class="badge bg-danger me-2">4K
-                            Video</span><span class="badge bg-danger me-2">Stabilizzazione</span></p>
-                </div>
-                <div class="modal-footer">
-                    <a href="#" class="btn btn-primary">Guarda Video</a>
-                    <a href="#" class="btn btn-outline-secondary">Gallery Completa</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="portfolioModal5" tabindex="-1" aria-labelledby="portfolioModal5Label"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="portfolioModal5Label">Real Estate Aereo</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <img src="https://via.placeholder.com/800x400/EDEDEC/D93222?text=Sostituisci+con+le+tue+foto+immobiliari"
-                        alt="Real Estate" class="img-fluid mb-3">
-                    <h6>Descrizione del Progetto</h6>
-                    <p>Descrivi i tuoi lavori di fotografia immobiliare aerea. Spiega come le riprese aeree valorizzano
-                        gli immobili.</p>
-                    <h6>Servizi Offerti</h6>
-                    <p><span class="badge bg-danger me-2">Foto Aeree HD</span><span class="badge bg-danger me-2">Video
-                            Tour</span><span class="badge bg-danger me-2">Editing Professionale</span></p>
-                </div>
-                <div class="modal-footer">
-                    <a href="#" class="btn btn-primary">Vedi Gallery</a>
-                    <a href="#" class="btn btn-outline-secondary">Richiedi Preventivo</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="portfolioModal6" tabindex="-1" aria-labelledby="portfolioModal6Label"
-        aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="portfolioModal6Label">Wedding Video</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <img src="https://via.placeholder.com/800x400/EDEDEC/6B6B6B?text=Sostituisci+con+screenshot+dei+tuoi+video"
-                        alt="Wedding Video" class="img-fluid mb-3">
-                    <h6>Descrizione del Progetto</h6>
-                    <p>Racconta i tuoi progetti di video editing per matrimoni. Spiega il tuo stile di montaggio e
-                        post-produzione.</p>
-                    <h6>Software e Tecniche</h6>
-                    <p><span class="badge bg-secondary me-2">Adobe Premiere</span><span
-                            class="badge bg-secondary me-2">After Effects</span><span
-                            class="badge bg-secondary me-2">Color Grading</span><span class="badge bg-secondary">Audio
-                            Mixing</span></p>
-                </div>
-                <div class="modal-footer">
-                    <a href="#" class="btn btn-primary">Guarda Video</a>
-                    <a href="#" class="btn btn-outline-secondary">Altri Lavori</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-
-    <script src="static/JS/script.js" type="text/babel"></script>
+    <!-- Custom JavaScript -->
+    <script src="static/JS/sc.js"></script>
 </body>
-
 </html>
