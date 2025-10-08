@@ -16,7 +16,7 @@ const debounce = (func, wait) => {
 
 const throttle = (func, limit) => {
     let inThrottle;
-    return function(...args) {
+    return function (...args) {
         if (!inThrottle) {
             func.apply(this, args);
             inThrottle = true;
@@ -105,9 +105,9 @@ window.addEventListener('scroll', throttle(updateActiveNavLink, 100));
 // ===================================
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    anchor.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
-        
+
         // Skip if it's just "#"
         if (href === '#') {
             e.preventDefault();
@@ -115,11 +115,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
 
         const target = document.querySelector(href);
-        
+
         if (target) {
             e.preventDefault();
             const offsetTop = target.offsetTop - 80;
-            
+
             window.scrollTo({
                 top: offsetTop,
                 behavior: 'smooth'
@@ -135,7 +135,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const animateCounter = (element, target, duration = 2000) => {
     let start = 0;
     const increment = target / (duration / 16);
-    
+
     const updateCounter = () => {
         start += increment;
         if (start < target) {
@@ -145,13 +145,13 @@ const animateCounter = (element, target, duration = 2000) => {
             element.textContent = target;
         }
     };
-    
+
     updateCounter();
 };
 
 const observeCounters = () => {
     const counters = document.querySelectorAll('.stat-number');
-    
+
     const counterObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
@@ -163,7 +163,7 @@ const observeCounters = () => {
     }, {
         threshold: 0.5
     });
-    
+
     counters.forEach(counter => counterObserver.observe(counter));
 };
 
@@ -173,7 +173,7 @@ const observeCounters = () => {
 
 const animateSkillBars = () => {
     const skillBars = document.querySelectorAll('.skill-progress');
-    
+
     const skillObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
@@ -186,7 +186,7 @@ const animateSkillBars = () => {
     }, {
         threshold: 0.5
     });
-    
+
     skillBars.forEach(bar => skillObserver.observe(bar));
 };
 
@@ -204,12 +204,12 @@ if (portfolioFilters.length > 0 && portfolioItems.length > 0) {
             portfolioFilters.forEach(btn => btn.classList.remove('active'));
             // Add active class to clicked filter
             filter.classList.add('active');
-            
+
             const filterValue = filter.getAttribute('data-filter');
-            
+
             portfolioItems.forEach(item => {
                 const itemCategory = item.getAttribute('data-category');
-                
+
                 if (filterValue === 'all' || itemCategory === filterValue) {
                     item.classList.remove('hidden');
                     setTimeout(() => {
@@ -234,7 +234,7 @@ if (portfolioFilters.length > 0 && portfolioItems.length > 0) {
 
 const revealElements = () => {
     const elements = document.querySelectorAll('.service-card, .portfolio-item, .testimonial-card');
-    
+
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
@@ -247,7 +247,7 @@ const revealElements = () => {
     }, {
         threshold: 0.1
     });
-    
+
     elements.forEach(element => {
         element.style.opacity = '0';
         element.style.transform = 'translateY(30px)';
@@ -292,35 +292,35 @@ if (contactForm) {
         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return re.test(email);
     };
-    
+
     const validatePhone = (phone) => {
         const re = /^[\d\s\+\-\(\)]+$/;
         return phone === '' || re.test(phone);
     };
-    
+
     const showError = (input, message) => {
         const formGroup = input.closest('.form-group') || input.closest('.checkbox-group');
         const errorElement = formGroup.querySelector('.form-error');
-        
+
         input.style.borderColor = 'var(--error-color)';
         if (errorElement) {
             errorElement.textContent = message;
         }
     };
-    
+
     const clearError = (input) => {
         const formGroup = input.closest('.form-group') || input.closest('.checkbox-group');
         const errorElement = formGroup.querySelector('.form-error');
-        
+
         input.style.borderColor = '';
         if (errorElement) {
             errorElement.textContent = '';
         }
     };
-    
+
     const validateForm = () => {
         let isValid = true;
-        
+
         // Name validation
         const nameInput = document.getElementById('name');
         if (nameInput.value.trim() === '') {
@@ -329,7 +329,7 @@ if (contactForm) {
         } else {
             clearError(nameInput);
         }
-        
+
         // Email validation
         const emailInput = document.getElementById('email');
         if (emailInput.value.trim() === '') {
@@ -341,7 +341,7 @@ if (contactForm) {
         } else {
             clearError(emailInput);
         }
-        
+
         // Phone validation (optional but must be valid if provided)
         const phoneInput = document.getElementById('phone');
         if (phoneInput.value.trim() !== '' && !validatePhone(phoneInput.value)) {
@@ -350,7 +350,7 @@ if (contactForm) {
         } else {
             clearError(phoneInput);
         }
-        
+
         // Service validation
         const serviceInput = document.getElementById('service');
         if (serviceInput.value === '') {
@@ -359,7 +359,7 @@ if (contactForm) {
         } else {
             clearError(serviceInput);
         }
-        
+
         // Message validation
         const messageInput = document.getElementById('message');
         if (messageInput.value.trim() === '') {
@@ -371,7 +371,7 @@ if (contactForm) {
         } else {
             clearError(messageInput);
         }
-        
+
         // Privacy checkbox validation
         const privacyInput = document.getElementById('privacy');
         if (!privacyInput.checked) {
@@ -380,10 +380,10 @@ if (contactForm) {
         } else {
             clearError(privacyInput);
         }
-        
+
         return isValid;
     };
-    
+
     // Real-time validation
     const inputs = contactForm.querySelectorAll('input, select, textarea');
     inputs.forEach(input => {
@@ -392,45 +392,45 @@ if (contactForm) {
                 validateForm();
             }
         });
-        
+
         input.addEventListener('input', () => {
             clearError(input);
         });
     });
-    
+
     // Form submission
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
+
         if (!validateForm()) {
             showNotification('Compila correttamente tutti i campi obbligatori', 'error');
             return;
         }
-        
+
         const submitBtn = contactForm.querySelector('.btn-submit');
         const originalText = submitBtn.querySelector('span').textContent;
-        
+
         // Disable button and show loading state
         submitBtn.disabled = true;
         submitBtn.querySelector('span').textContent = 'Invio in corso...';
         submitBtn.querySelector('i').className = 'fas fa-spinner fa-spin';
-        
+
         // Simulate form submission (replace with actual API call)
         try {
             // Simulate API delay
             await new Promise(resolve => setTimeout(resolve, 2000));
-            
+
             // Here you would normally send the form data to your backend
             // const formData = new FormData(contactForm);
             // const response = await fetch('/api/contact', {
             //     method: 'POST',
             //     body: formData
             // });
-            
+
             // Success
             showNotification('Messaggio inviato con successo! Ti risponderemo presto.', 'success');
             contactForm.reset();
-            
+
         } catch (error) {
             // Error
             showNotification('Si è verificato un errore. Riprova più tardi.', 'error');
@@ -452,21 +452,21 @@ const newsletterForm = document.querySelector('.newsletter-form');
 if (newsletterForm) {
     newsletterForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
+
         const emailInput = newsletterForm.querySelector('input[type="email"]');
         const email = emailInput.value.trim();
-        
+
         if (email === '') {
             showNotification('Inserisci un\'email valida', 'error');
             return;
         }
-        
+
         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!re.test(email)) {
             showNotification('Inserisci un\'email valida', 'error');
             return;
         }
-        
+
         // Simulate newsletter subscription
         try {
             await new Promise(resolve => setTimeout(resolve, 1000));
@@ -486,10 +486,10 @@ const showNotification = (message, type = 'success') => {
     const notification = document.getElementById('notification');
     const notificationMessage = notification.querySelector('.notification-message');
     const notificationIcon = notification.querySelector('i');
-    
+
     // Set message
     notificationMessage.textContent = message;
-    
+
     // Set icon based on type
     if (type === 'success') {
         notificationIcon.className = 'fas fa-check-circle';
@@ -500,10 +500,10 @@ const showNotification = (message, type = 'success') => {
         notification.style.borderColor = 'var(--error-color)';
         notificationIcon.style.color = 'var(--error-color)';
     }
-    
+
     // Show notification
     notification.classList.add('show');
-    
+
     // Hide after 5 seconds
     setTimeout(() => {
         notification.classList.remove('show');
@@ -516,7 +516,7 @@ const showNotification = (message, type = 'success') => {
 
 const lazyLoadImages = () => {
     const images = document.querySelectorAll('img[loading="lazy"]');
-    
+
     const imageObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -526,7 +526,7 @@ const lazyLoadImages = () => {
             }
         });
     });
-    
+
     images.forEach(img => imageObserver.observe(img));
 };
 
@@ -537,10 +537,10 @@ const lazyLoadImages = () => {
 const createCursorTrail = () => {
     // Only on desktop
     if (window.innerWidth < 768) return;
-    
+
     const trail = [];
     const trailLength = 20;
-    
+
     for (let i = 0; i < trailLength; i++) {
         const dot = document.createElement('div');
         dot.style.position = 'fixed';
@@ -554,32 +554,32 @@ const createCursorTrail = () => {
         document.body.appendChild(dot);
         trail.push(dot);
     }
-    
+
     let mouseX = 0;
     let mouseY = 0;
-    
+
     document.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
     });
-    
+
     const animateTrail = () => {
         let x = mouseX;
         let y = mouseY;
-        
+
         trail.forEach((dot, index) => {
             dot.style.left = x + 'px';
             dot.style.top = y + 'px';
             dot.style.transform = `scale(${1 - index / trailLength})`;
-            
+
             const nextDot = trail[index + 1] || trail[0];
             x += (parseInt(nextDot.style.left) - x) * 0.3;
             y += (parseInt(nextDot.style.top) - y) * 0.3;
         });
-        
+
         requestAnimationFrame(animateTrail);
     };
-    
+
     animateTrail();
 };
 
@@ -615,10 +615,10 @@ const init = () => {
     animateSkillBars();
     revealElements();
     lazyLoadImages();
-    
+
     // Optional: Uncomment to enable cursor trail
     // createCursorTrail();
-    
+
     // Log initialization
     console.log('%c🚁 Portfolio Drone Pro Initialized! ', 'background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; padding: 10px 20px; border-radius: 5px; font-size: 14px; font-weight: bold;');
     console.log('%cDeveloped with ❤️ for professional drone photography', 'color: #94a3b8; font-size: 12px;');
@@ -639,7 +639,7 @@ window.addEventListener('load', () => {
     // Log page load time
     const loadTime = window.performance.timing.domContentLoadedEventEnd - window.performance.timing.navigationStart;
     console.log(`%c⚡ Page loaded in ${loadTime}ms`, 'color: #10b981; font-weight: bold;');
-    
+
     // Check for slow loading images
     const images = document.querySelectorAll('img');
     images.forEach(img => {
@@ -683,15 +683,15 @@ const createSkipLink = () => {
         z-index: 10000;
         transition: top 0.3s;
     `;
-    
+
     skipLink.addEventListener('focus', () => {
         skipLink.style.top = '0';
     });
-    
+
     skipLink.addEventListener('blur', () => {
         skipLink.style.top = '-40px';
     });
-    
+
     document.body.insertBefore(skipLink, document.body.firstChild);
 };
 
@@ -761,7 +761,7 @@ const trackEvent = (category, action, label) => {
             'event_label': label
         });
     }
-    
+
     // Console log for development
     console.log(`Event tracked: ${category} - ${action} - ${label}`);
 };
