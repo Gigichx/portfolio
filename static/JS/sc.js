@@ -606,6 +606,154 @@ if (window.history.replaceState) {
 }
 
 // ===================================
+// Animated Geometric Background
+// ===================================
+
+const initGeometricBackground = () => {
+    const canvas = document.getElementById('geometricCanvas');
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    // Triangle particles
+    const triangles = [];
+    const triangleCount = 15;
+
+    class Triangle {
+        constructor() {
+            this.reset();
+            this.y = Math.random() * height;
+            this.opacity = Math.random() * 0.3 + 0.1;
+        }
+
+        reset() {
+            this.x = Math.random() * width;
+            this.y = -50;
+            this.size = Math.random() * 30 + 20;
+            this.speedY = Math.random() * 0.5 + 0.2;
+            this.speedX = (Math.random() - 0.5) * 0.3;
+            this.rotation = Math.random() * Math.PI * 2;
+            this.rotationSpeed = (Math.random() - 0.5) * 0.02;
+            this.opacity = Math.random() * 0.3 + 0.1;
+        }
+
+        update() {
+            this.y += this.speedY;
+            this.x += this.speedX;
+            this.rotation += this.rotationSpeed;
+
+            if (this.y > height + 50) {
+                this.reset();
+            }
+
+            if (this.x < -50 || this.x > width + 50) {
+                this.x = Math.random() * width;
+            }
+        }
+
+        draw() {
+            ctx.save();
+            ctx.translate(this.x, this.y);
+            ctx.rotate(this.rotation);
+            ctx.globalAlpha = this.opacity;
+
+            // Draw triangle
+            ctx.beginPath();
+            ctx.moveTo(0, -this.size / 2);
+            ctx.lineTo(-this.size / 2, this.size / 2);
+            ctx.lineTo(this.size / 2, this.size / 2);
+            ctx.closePath();
+
+            // Gradient fill
+            const gradient = ctx.createLinearGradient(0, -this.size / 2, 0, this.size / 2);
+            gradient.addColorStop(0, '#FF3333');
+            gradient.addColorStop(1, '#CC0000');
+            ctx.fillStyle = gradient;
+            ctx.fill();
+
+            // Stroke
+            ctx.strokeStyle = '#FF3333';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+
+            ctx.restore();
+        }
+    }
+
+    // Create triangles
+    for (let i = 0; i < triangleCount; i++) {
+        triangles.push(new Triangle());
+    }
+
+    // Animation loop
+    const animate = () => {
+        ctx.clearRect(0, 0, width, height);
+
+        triangles.forEach(triangle => {
+            triangle.update();
+            triangle.draw();
+        });
+
+        requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    // Handle resize
+    window.addEventListener('resize', debounce(() => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+    }, 250));
+};
+
+// ===================================
+// Custom Cursor (Removed)
+// ===================================
+
+// Custom cursor functionality has been removed to use default browser cursor
+
+// ===================================
+// Text Split Animation
+// ===================================
+
+const initTextSplitAnimation = () => {
+    const animateText = (element) => {
+        const text = element.textContent;
+        element.textContent = '';
+
+        text.split('').forEach((char, index) => {
+            const span = document.createElement('span');
+            span.className = 'char';
+            span.textContent = char === ' ' ? '\u00A0' : char;
+            span.style.animationDelay = `${index * 0.03}s`;
+            element.appendChild(span);
+        });
+    };
+
+    // Animate hero title on load
+    const heroTitle = document.querySelector('.hero-title');
+    if (heroTitle) {
+        setTimeout(() => {
+            const gradientText = heroTitle.querySelector('.gradient-text');
+            if (gradientText) {
+                const gradientContent = gradientText.textContent;
+                gradientText.textContent = '';
+
+                gradientContent.split('').forEach((char, index) => {
+                    const span = document.createElement('span');
+                    span.className = 'char';
+                    span.textContent = char === ' ' ? '\u00A0' : char;
+                    span.style.animationDelay = `${(index + 20) * 0.03}s`;
+                    gradientText.appendChild(span);
+                });
+            }
+        }, 300);
+    }
+};
+
+// ===================================
 // Initialize All Functions
 // ===================================
 
@@ -616,12 +764,13 @@ const init = () => {
     revealElements();
     lazyLoadImages();
 
-    // Optional: Uncomment to enable cursor trail
-    // createCursorTrail();
+    // Initialize new effects
+    initGeometricBackground();
+    initTextSplitAnimation();
 
     // Log initialization
-    console.log('%c🚁 Portfolio Drone Pro Initialized! ', 'background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; padding: 10px 20px; border-radius: 5px; font-size: 14px; font-weight: bold;');
-    console.log('%cDeveloped with ❤️ for professional drone photography', 'color: #94a3b8; font-size: 12px;');
+    console.log('%c🔺 GigiCHX Portfolio Initialized! ', 'background: linear-gradient(135deg, #FF3333, #CC0000); color: white; padding: 10px 20px; border-radius: 5px; font-size: 14px; font-weight: bold;');
+    console.log('%cDeveloped with ❤️ and geometric precision', 'color: #999999; font-size: 12px;');
 };
 
 // Run initialization when DOM is ready

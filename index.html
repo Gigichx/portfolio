@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Portfolio professionale di fotografia e videografia aerea con drone. Servizi per real estate, eventi, ispezioni tecniche e mappatura.">
+        content="Portfolio professionale GigiCHX - Fotografia e videografia aerea con drone. Servizi per real estate, eventi, ispezioni tecniche e mappatura.">
     <meta name="keywords"
-        content="fotografia drone, video aerei, real estate, ispezioni drone, eventi, mappatura aerea">
-    <meta name="author" content="Drone Photography Pro">
-    <title>Drone Photography Pro - Portfolio Professionale</title>
+        content="GigiCHX, fotografia drone, video aerei, real estate, ispezioni drone, eventi, mappatura aerea">
+    <meta name="author" content="GigiCHX">
+    <title>GigiCHX - Portfolio Professionale Drone</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,22 +25,27 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="static/CSS/stile.css">
+    <link rel="icon" href="static/CSS/IMG/Logo Gigichx.png">
 </head>
 
 <body>
+    <!-- Animated Geometric Background -->
+    <canvas id="geometricCanvas"></canvas>
+
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="container">
             <div class="nav-wrapper">
                 <div class="logo">
-                    <i class="fas fa-drone"></i>
-                    <span>Drone<span class="gradient-text">Pro</span></span>
+                    <img src="static/CSS/IMG/logo chx.png" alt="GigiCHX Logo" style="height: 40px; width: auto;">
+                    <span>Gigi<span class="gradient-text">CHX</span></span>
                 </div>
 
                 <ul class="nav-menu" id="navMenu">
                     <li><a href="#home" class="nav-link active">Home</a></li>
                     <li><a href="#about" class="nav-link">Chi Sono</a></li>
                     <li><a href="#services" class="nav-link">Servizi</a></li>
+                    <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
                     <li><a href="#contact" class="nav-link">Contatti</a></li>
                 </ul>
 
@@ -56,18 +61,23 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-background"></div>
+
+        <!-- Geometric Decorations -->
+        <div class="geometric-shape triangle-1"></div>
+        <div class="geometric-shape triangle-2"></div>
+
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <span class="hero-subtitle animate-fadeIn">Fotografia & Videografia Aerea</span>
-                    <h1 class="hero-title animate-slideUp">
+                    <span class="hero-subtitle">Fotografia & Videografia Aerea</span>
+                    <h1 class="hero-title">
                         Cattura il Mondo da una <span class="gradient-text">Nuova Prospettiva</span>
                     </h1>
-                    <p class="hero-description animate-slideUp">
+                    <p class="hero-description">
                         Servizi professionali di fotografia e videografia con drone per real estate,
                         eventi, ispezioni tecniche e molto altro. Certificato ENAC e completamente assicurato.
                     </p>
-                    <div class="hero-buttons animate-slideUp">
+                    <div class="hero-buttons">
                         <a href="#services" class="btn btn-primary">
                             <span>Scopri i Servizi</span>
                             <i class="fas fa-arrow-right"></i>
@@ -215,37 +225,80 @@
                 </div>
 
                 <div class="carousel-inner">
-                    <!-- Slide 1: Fotografia Aerea -->
+                    <!-- Slide 1: Fotografia Aerea & Video Cinematici -->
                     <div class="carousel-item active">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
+                        <div class="row g-4">
+                            <div class="col-lg-4 col-md-6">
                                 <div class="service-card-carousel">
                                     <div class="service-icon-large">
-                                        <i class="fas fa-camera fa-4x text-primary"></i>
+                                        <i class="fas fa-camera fa-3x text-primary"></i>
                                     </div>
-                                    <h3 class="h2 fw-bold mb-4">Fotografia Aerea</h3>
-                                    <p class="lead text-muted mb-4">
-                                        Scatti professionali ad alta risoluzione per catturare paesaggi,
-                                        architetture e panorami mozzafiato da prospettive uniche.
+                                    <h3 class="h4 fw-bold mb-3">Fotografia Aerea</h3>
+                                    <p class="text-muted mb-3">
+                                        Scatti professionali ad alta risoluzione per catturare paesaggi e architetture.
                                     </p>
-                                    <div class="row g-3 mt-4">
-                                        <div class="col-md-4">
-                                            <div class="feature-badge">
-                                                <i class="fas fa-check me-2"></i>
-                                                Foto fino a 48MP
-                                            </div>
+                                    <div class="feature-list">
+                                        <div class="feature-badge mb-2">
+                                            <i class="fas fa-check me-2"></i>
+                                            Foto fino a 48MP
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="feature-badge">
-                                                <i class="fas fa-check me-2"></i>
-                                                Formato RAW e JPEG
-                                            </div>
+                                        <div class="feature-badge mb-2">
+                                            <i class="fas fa-check me-2"></i>
+                                            Formato RAW e JPEG
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="feature-badge">
-                                                <i class="fas fa-check me-2"></i>
-                                                Post-produzione inclusa
-                                            </div>
+                                        <div class="feature-badge">
+                                            <i class="fas fa-check me-2"></i>
+                                            Post-produzione inclusa
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="service-card-carousel">
+                                    <div class="service-icon-large">
+                                        <i class="fas fa-video fa-3x text-primary"></i>
+                                    </div>
+                                    <h3 class="h4 fw-bold mb-3">Video Cinematici</h3>
+                                    <p class="text-muted mb-3">
+                                        Riprese video aeree in 4K e 6K per spot pubblicitari e contenuti promozionali.
+                                    </p>
+                                    <div class="feature-list">
+                                        <div class="feature-badge mb-2">
+                                            <i class="fas fa-check me-2"></i>
+                                            Video fino a 6K
+                                        </div>
+                                        <div class="feature-badge mb-2">
+                                            <i class="fas fa-check me-2"></i>
+                                            60fps per slow motion
+                                        </div>
+                                        <div class="feature-badge">
+                                            <i class="fas fa-check me-2"></i>
+                                            Color grading professionale
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="service-card-carousel">
+                                    <div class="service-icon-large">
+                                        <i class="fas fa-home fa-3x text-primary"></i>
+                                    </div>
+                                    <h3 class="h4 fw-bold mb-3">Real Estate</h3>
+                                    <p class="text-muted mb-3">
+                                        Servizi dedicati al settore immobiliare per valorizzare proprietà.
+                                    </p>
+                                    <div class="feature-list">
+                                        <div class="feature-badge mb-2">
+                                            <i class="fas fa-check me-2"></i>
+                                            Tour virtuali 360°
+                                        </div>
+                                        <div class="feature-badge mb-2">
+                                            <i class="fas fa-check me-2"></i>
+                                            Foto e video esterni
+                                        </div>
+                                        <div class="feature-badge">
+                                            <i class="fas fa-check me-2"></i>
+                                            Planimetrie aeree
                                         </div>
                                     </div>
                                 </div>
@@ -253,37 +306,80 @@
                         </div>
                     </div>
 
-                    <!-- Slide 2: Video Cinematici -->
+                    <!-- Slide 2: Eventi & Ispezioni & Mappatura -->
                     <div class="carousel-item">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
+                        <div class="row g-4">
+                            <div class="col-lg-4 col-md-6">
                                 <div class="service-card-carousel">
                                     <div class="service-icon-large">
-                                        <i class="fas fa-video fa-4x text-primary"></i>
+                                        <i class="fas fa-calendar fa-3x text-primary"></i>
                                     </div>
-                                    <h3 class="h2 fw-bold mb-4">Video Cinematici</h3>
-                                    <p class="lead text-muted mb-4">
-                                        Riprese video aeree in 4K e 6K per spot pubblicitari,
-                                        documentari e contenuti promozionali di alta qualità.
+                                    <h3 class="h4 fw-bold mb-3">Eventi</h3>
+                                    <p class="text-muted mb-3">
+                                        Riprese aeree per matrimoni, eventi sportivi e manifestazioni.
                                     </p>
-                                    <div class="row g-3 mt-4">
-                                        <div class="col-md-4">
-                                            <div class="feature-badge">
-                                                <i class="fas fa-check me-2"></i>
-                                                Video fino a 6K
-                                            </div>
+                                    <div class="feature-list">
+                                        <div class="feature-badge mb-2">
+                                            <i class="fas fa-check me-2"></i>
+                                            Matrimoni e cerimonie
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="feature-badge">
-                                                <i class="fas fa-check me-2"></i>
-                                                60fps per slow motion
-                                            </div>
+                                        <div class="feature-badge mb-2">
+                                            <i class="fas fa-check me-2"></i>
+                                            Eventi sportivi
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="feature-badge">
-                                                <i class="fas fa-check me-2"></i>
-                                                Color grading professionale
-                                            </div>
+                                        <div class="feature-badge">
+                                            <i class="fas fa-check me-2"></i>
+                                            Manifestazioni pubbliche
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="service-card-carousel">
+                                    <div class="service-icon-large">
+                                        <i class="fas fa-search fa-3x text-primary"></i>
+                                    </div>
+                                    <h3 class="h4 fw-bold mb-3">Ispezioni Tecniche</h3>
+                                    <p class="text-muted mb-3">
+                                        Ispezioni di strutture, tetti, pannelli solari e infrastrutture.
+                                    </p>
+                                    <div class="feature-list">
+                                        <div class="feature-badge mb-2">
+                                            <i class="fas fa-check me-2"></i>
+                                            Ispezioni tetti
+                                        </div>
+                                        <div class="feature-badge mb-2">
+                                            <i class="fas fa-check me-2"></i>
+                                            Pannelli fotovoltaici
+                                        </div>
+                                        <div class="feature-badge">
+                                            <i class="fas fa-check me-2"></i>
+                                            Report dettagliati
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="service-card-carousel">
+                                    <div class="service-icon-large">
+                                        <i class="fas fa-map fa-3x text-primary"></i>
+                                    </div>
+                                    <h3 class="h4 fw-bold mb-3">Mappatura 3D</h3>
+                                    <p class="text-muted mb-3">
+                                        Rilievi fotogrammetrici e modelli 3D per cantieri e terreni.
+                                    </p>
+                                    <div class="feature-list">
+                                        <div class="feature-badge mb-2">
+                                            <i class="fas fa-check me-2"></i>
+                                            Modelli 3D
+                                        </div>
+                                        <div class="feature-badge mb-2">
+                                            <i class="fas fa-check me-2"></i>
+                                            Ortofoto georeferenziate
+                                        </div>
+                                        <div class="feature-badge">
+                                            <i class="fas fa-check me-2"></i>
+                                            Calcolo volumetrie
                                         </div>
                                     </div>
                                 </div>
@@ -291,37 +387,80 @@
                         </div>
                     </div>
 
-                    <!-- Slide 3: Real Estate -->
+                    <!-- Slide 3: Agricoltura & Pubblicità & Documentari -->
                     <div class="carousel-item">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8">
+                        <div class="row g-4">
+                            <div class="col-lg-4 col-md-6">
                                 <div class="service-card-carousel">
                                     <div class="service-icon-large">
-                                        <i class="fas fa-home fa-4x text-primary"></i>
+                                        <i class="fas fa-seedling fa-3x text-primary"></i>
                                     </div>
-                                    <h3 class="h2 fw-bold mb-4">Real Estate</h3>
-                                    <p class="lead text-muted mb-4">
-                                        Servizi dedicati al settore immobiliare per valorizzare
-                                        proprietà residenziali e commerciali con riprese aeree.
+                                    <h3 class="h4 fw-bold mb-3">Agricoltura di Precisione</h3>
+                                    <p class="text-muted mb-3">
+                                        Monitoraggio colture e analisi multispettrale per l'agricoltura.
                                     </p>
-                                    <div class="row g-3 mt-4">
-                                        <div class="col-md-4">
-                                            <div class="feature-badge">
-                                                <i class="fas fa-check me-2"></i>
-                                                Tour virtuali 360°
-                                            </div>
+                                    <div class="feature-list">
+                                        <div class="feature-badge mb-2">
+                                            <i class="fas fa-check me-2"></i>
+                                            Analisi NDVI
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="feature-badge">
-                                                <i class="fas fa-check me-2"></i>
-                                                Foto e video esterni
-                                            </div>
+                                        <div class="feature-badge mb-2">
+                                            <i class="fas fa-check me-2"></i>
+                                            Monitoraggio colture
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="feature-badge">
-                                                <i class="fas fa-check me-2"></i>
-                                                Planimetrie aeree
-                                            </div>
+                                        <div class="feature-badge">
+                                            <i class="fas fa-check me-2"></i>
+                                            Mappe di prescrizione
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="service-card-carousel">
+                                    <div class="service-icon-large">
+                                        <i class="fas fa-bullhorn fa-3x text-primary"></i>
+                                    </div>
+                                    <h3 class="h4 fw-bold mb-3">Pubblicità & Marketing</h3>
+                                    <p class="text-muted mb-3">
+                                        Contenuti aerei per campagne pubblicitarie e social media.
+                                    </p>
+                                    <div class="feature-list">
+                                        <div class="feature-badge mb-2">
+                                            <i class="fas fa-check me-2"></i>
+                                            Spot pubblicitari
+                                        </div>
+                                        <div class="feature-badge mb-2">
+                                            <i class="fas fa-check me-2"></i>
+                                            Contenuti social
+                                        </div>
+                                        <div class="feature-badge">
+                                            <i class="fas fa-check me-2"></i>
+                                            Video promozionali
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6">
+                                <div class="service-card-carousel">
+                                    <div class="service-icon-large">
+                                        <i class="fas fa-film fa-3x text-primary"></i>
+                                    </div>
+                                    <h3 class="h4 fw-bold mb-3">Documentari & Cinema</h3>
+                                    <p class="text-muted mb-3">
+                                        Riprese aeree cinematografiche per produzioni professionali.
+                                    </p>
+                                    <div class="feature-list">
+                                        <div class="feature-badge mb-2">
+                                            <i class="fas fa-check me-2"></i>
+                                            Riprese cinematiche
+                                        </div>
+                                        <div class="feature-badge mb-2">
+                                            <i class="fas fa-check me-2"></i>
+                                            Documentari naturalistici
+                                        </div>
+                                        <div class="feature-badge">
+                                            <i class="fas fa-check me-2"></i>
+                                            Produzioni TV
                                         </div>
                                     </div>
                                 </div>
@@ -344,18 +483,18 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
         <div class="container">
             <div class="section-header">
-                <span class="section-subtitle">Contatti</span>
-                <h2 class="section-title">Iniziamo a Lavorare <span class="gradient-text">Insieme</span></h2>
+                <span class="section-subtitle">Portfolio</span>
+                <h2 class="section-title">I Miei <span class="gradient-text">Lavori</span></h2>
                 <p class="section-description">
-                    Contattami per un preventivo gratuito o per discutere del tuo progetto
+                    Scopri alcuni dei progetti che ho realizzato per i miei clienti
                 </p>
             </div>
 
-            <div class="contact-content">
+            <div class="portfolio-filters">
                 <button class="filter-btn active" data-filter="all">
                     <i class="fas fa-th"></i>
                     <span>Tutti</span>
@@ -762,28 +901,8 @@
     <footer class="footer-minimal">
         <div class="container">
             <div class="row align-items-center py-4">
-                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    <p class="mb-0 footer-text">&copy; 2025 DronePro. Tutti i diritti riservati.</p>
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <div class="social-links-minimal">
-                        <a href="https://facebook.com" class="social-link-minimal" target="_blank" rel="noopener"
-                            aria-label="Facebook">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="https://instagram.com" class="social-link-minimal" target="_blank" rel="noopener"
-                            aria-label="Instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://youtube.com" class="social-link-minimal" target="_blank" rel="noopener"
-                            aria-label="YouTube">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="https://linkedin.com" class="social-link-minimal" target="_blank" rel="noopener"
-                            aria-label="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
+                <div class="col-md-12 text-center">
+                    <p class="mb-0 footer-text">&copy; 2025 GigiCHX. Tutti i diritti riservati.</p>
                 </div>
             </div>
         </div>
