@@ -84,6 +84,13 @@ button {
     background: none;
     cursor: pointer;
     font-family: inherit;
+    outline: none;
+}
+
+button:focus,
+button:active {
+    outline: none;
+    box-shadow: none;
 }
 
 input,
@@ -91,6 +98,17 @@ textarea,
 select {
     font-family: inherit;
     border: none;
+    outline: none;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+a:focus {
     outline: none;
 }
 
@@ -105,11 +123,11 @@ select {
 }
 
 .gradient-text {
-    background: var(--gradient-primary);
-    color: var(--primary-color);
+    background: linear-gradient(135deg, #FF3333 0%, #FF6666 50%, #FF3333 100%);
     -webkit-background-clip: text;
+    -webkit-text-fill-color: red;
     background-clip: text;
-    
+    display: inline-block;
 }
 
 /* Animations */
@@ -330,11 +348,8 @@ select {
     left: 0;
     width: 100%;
     height: 100%;
-    background:
-        radial-gradient(circle at 20% 50%, rgba(37, 99, 235, 0.15), transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(124, 58, 237, 0.15), transparent 50%),
-        var(--gradient-dark);
     z-index: -1;
+    overflow: hidden;
 }
 
 .hero-background::before {
@@ -344,11 +359,34 @@ select {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image:
-        linear-gradient(rgba(37, 99, 235, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(37, 99, 235, 0.03) 1px, transparent 1px);
-    background-size: 50px 50px;
-    animation: float 20s ease-in-out infinite;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.7) 100%);
+    z-index: 2;
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 1;
+}
+
+.hero-video-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 20% 50%, rgba(255, 51, 51, 0.15), transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(204, 0, 0, 0.15), transparent 50%),
+        var(--gradient-dark);
+    z-index: 1;
 }
 
 .hero-content {
@@ -404,6 +442,8 @@ select {
     transition: var(--transition-normal);
     position: relative;
     overflow: hidden;
+    outline: none;
+    border: none;
 }
 
 .btn::before {
@@ -424,23 +464,23 @@ select {
 .btn-primary {
     background: var(--gradient-primary);
     color: white;
-    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.3);
+    box-shadow: 0 4px 16px rgba(255, 51, 51, 0.4);
 }
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4);
+    box-shadow: 0 8px 24px rgba(255, 51, 51, 0.6);
 }
 
 .btn-secondary {
-    background: rgba(255, 255, 255, 0.05);
-    border: 2px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 51, 51, 0.1);
+    border: 2px solid rgba(255, 51, 51, 0.3);
     color: var(--text-primary);
 }
 
 .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 51, 51, 0.2);
+    border-color: rgba(255, 51, 51, 0.5);
     transform: translateY(-2px);
 }
 
@@ -1359,7 +1399,7 @@ section {
 
 .newsletter-form button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.4);
+    box-shadow: 0 4px 16px rgba(255, 51, 51, 0.4);
 }
 
 .footer-social {
