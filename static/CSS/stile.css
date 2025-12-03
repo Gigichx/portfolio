@@ -752,12 +752,12 @@ section {
     color: var(--primary-color);
 }
 
-.featured-price .amount {
-    background: linear-gradient(135deg, #FFD700, #FFA500);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
+ .featured-price .amount {
+     background: linear-gradient(135deg, #FFD700, #FFA500);
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+     background-clip: text;
+ }
 
 .features-list {
     text-align: left;

@@ -18,14 +18,14 @@ function initLoadingScreen() {
     const percentage = document.getElementById('percentage');
     const loadingText = document.getElementById('loadingText');
     const loadingScreen = document.getElementById('loadingScreen');
-
+    
     if (!loadingScreen) return;
-
+    
     function animateText(text) {
         if (!loadingText) return;
         loadingText.innerHTML = '';
         const chars = text.split('');
-
+        
         chars.forEach((char, index) => {
             const span = document.createElement('span');
             span.textContent = char === ' ' ? '\u00A0' : char;
@@ -33,20 +33,20 @@ function initLoadingScreen() {
             loadingText.appendChild(span);
         });
     }
-
+    
     function changeMessage() {
         currentMessageIndex = (currentMessageIndex + 1) % loadingMessages.length;
         animateText(loadingMessages[currentMessageIndex]);
     }
-
+    
     function updateProgress() {
         if (progress < 100) {
             const increment = Math.random() * 15 + 5;
             progress = Math.min(progress + increment, 100);
-
+            
             if (progressBar) progressBar.style.width = progress + '%';
             if (percentage) percentage.textContent = Math.floor(progress) + '%';
-
+            
             if (progress > 30 && currentMessageIndex === 0) {
                 changeMessage();
             } else if (progress > 60 && currentMessageIndex === 1) {
@@ -54,7 +54,7 @@ function initLoadingScreen() {
             } else if (progress > 85 && currentMessageIndex === 2) {
                 changeMessage();
             }
-
+            
             setTimeout(updateProgress, Math.random() * 300 + 200);
         } else {
             setTimeout(() => {
@@ -67,11 +67,11 @@ function initLoadingScreen() {
             }, 500);
         }
     }
-
+    
     function createParticles() {
         const container = document.getElementById('particlesContainer');
         if (!container) return;
-
+        
         const particleCount = 30;
         for (let i = 0; i < particleCount; i++) {
             const particle = document.createElement('div');
@@ -81,11 +81,11 @@ function initLoadingScreen() {
             container.appendChild(particle);
         }
     }
-
+    
     createParticles();
     animateText(loadingMessages[0]);
     setTimeout(updateProgress, 500);
-
+    
     // Fallback safety
     setTimeout(() => {
         if (loadingScreen && !loadingScreen.classList.contains('hidden')) {
@@ -205,11 +205,11 @@ const tabContents = document.querySelectorAll('.tab-content');
 tabBtns.forEach(btn => {
     btn.addEventListener('click', () => {
         const targetTab = btn.getAttribute('data-tab');
-
+        
         // Remove active from all
         tabBtns.forEach(b => b.classList.remove('active'));
         tabContents.forEach(c => c.classList.remove('active'));
-
+        
         // Add active to clicked
         btn.classList.add('active');
         const targetContent = document.getElementById(`${targetTab}-content`);
@@ -253,20 +253,20 @@ const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-
+        
         const submitBtn = contactForm.querySelector('button[type="submit"]');
         const originalText = submitBtn.querySelector('span').textContent;
-
+        
         // Disable button
         submitBtn.disabled = true;
         submitBtn.querySelector('span').textContent = 'Invio in corso...';
         submitBtn.querySelector('i').className = 'fas fa-spinner fa-spin';
-
+        
         // Simulate sending (replace with actual API call)
         setTimeout(() => {
             alert('✅ Messaggio inviato con successo! Ti risponderò presto.');
             contactForm.reset();
-
+            
             // Re-enable button
             submitBtn.disabled = false;
             submitBtn.querySelector('span').textContent = originalText;
