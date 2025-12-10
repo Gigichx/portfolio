@@ -195,29 +195,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// ===================================
-// SERVICES TABS
-// ===================================
 
-const tabBtns = document.querySelectorAll('.tab-btn');
-const tabContents = document.querySelectorAll('.tab-content');
-
-tabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        const targetTab = btn.getAttribute('data-tab');
-        
-        // Remove active from all
-        tabBtns.forEach(b => b.classList.remove('active'));
-        tabContents.forEach(c => c.classList.remove('active'));
-        
-        // Add active to clicked
-        btn.classList.add('active');
-        const targetContent = document.getElementById(`${targetTab}-content`);
-        if (targetContent) {
-            targetContent.classList.add('active');
-        }
-    });
-});
 
 // ===================================
 // SCROLL TO TOP BUTTON
@@ -286,3 +264,105 @@ if (document.readyState === 'loading') {
 }
 
 console.log('🚀 GigiCHX Portfolio caricato con successo!');
+
+// ===================================
+// SERVICES CAROUSEL AUTO-PLAY
+// ===================================
+
+const carousel = document.getElementById('servicesCarousel');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const dotsContainer = document.getElementById('carouselDots');
+
+if (carousel && prevBtn && nextBtn && dotsContainer) {
+    const cards = carousel.querySelectorAll('.service-card');
+    let currentIndex = 0;
+    let autoPlayInterval;
+    const autoPlayDelay = 4000; // 4 secondi
+
+    // Crea i dots (esclude gli ultimi 2 service card)
+    function createDots() {
+        cards.forEach((_, index) => {
+            if (index >= cards.length - 2) return;
+            const dot = document.createElement('div');
+            dot.className = 'carousel-dot';
+            if (index === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(index));
+            dotsContainer.appendChild(dot);
+        });
+    }
+
+    // Aggiorna dots attivi
+    function updateDots() {
+        const dots = dotsContainer.querySelectorAll('.carousel-dot');
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    }
+
+    // Vai a uno slide specifico
+    function goToSlide(index) {
+        currentIndex = index;
+        const cardWidth = cards[0].offsetWidth;
+        const gap = 30;
+        const scrollPosition = (cardWidth + gap) * currentIndex;
+        
+        carousel.scrollTo({
+            left: scrollPosition,
+            behavior: 'smooth'
+        });
+        
+        updateDots();
+        resetAutoPlay();
+    }
+
+    // Slide successivo
+    function nextSlide() {
+        const visibleCards = cards.length - 2;
+        currentIndex = (currentIndex + 1) % visibleCards;
+        goToSlide(currentIndex);
+    }
+
+    // Slide precedente
+    function prevSlide() {
+        const visibleCards = cards.length - 2;
+        currentIndex = (currentIndex - 1 + visibleCards) % visibleCards;
+        goToSlide(currentIndex);
+    }
+
+    // Auto-play
+    function startAutoPlay() {
+        autoPlayInterval = setInterval(nextSlide, autoPlayDelay);
+    }
+
+    function stopAutoPlay() {
+        clearInterval(autoPlayInterval);
+    }
+
+    function resetAutoPlay() {
+        stopAutoPlay();
+        startAutoPlay();
+    }
+
+    // Event listeners
+    nextBtn.addEventListener('click', nextSlide);
+    prevBtn.addEventListener('click', prevSlide);
+
+    // Ferma auto-play quando utente interagisce
+    carousel.addEventListener('mouseenter', stopAutoPlay);
+    carousel.addEventListener('mouseleave', startAutoPlay);
+    carousel.addEventListener('touchstart', stopAutoPlay);
+
+    // Inizializza
+    createDots();
+    startAutoPlay();
+
+    // Gestisci resize
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            goToSlide(currentIndex);
+        }, 250);
+    });
+}

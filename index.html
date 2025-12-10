@@ -162,8 +162,7 @@
 
             <div class="about-content">
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=800&fit=crop"
-                        alt="Developer workspace" loading="lazy">
+                    <img src="static/CSS/IMG/logo chx.png" alt="GigiCHX Logo" loading="lazy">
                 </div>
 
                 <div class="about-text">
@@ -185,21 +184,21 @@
                             <i class="fas fa-code"></i>
                             <div>
                                 <strong>Sviluppo Web & Automazioni</strong>
-                                <span>HTML, CSS, JavaScript, Python, PHP</span>
-                            </div>
-                        </div>
-                        <div class="cred-item">
-                            <i class="fas fa-drafting-compass"></i>
-                            <div>
-                                <strong>Design Tecnico</strong>
-                                <span>CAD 2D (ICDL Certified) | Modellazione 3D</span>
+                                <span>Siti web, e-commerce, bot e script personalizzati</span>
                             </div>
                         </div>
                         <div class="cred-item">
                             <i class="fas fa-video"></i>
                             <div>
                                 <strong>Video Production</strong>
-                                <span>Editing | Color Grading | Motion Graphics</span>
+                                <span>Editing professionale, color grading, motion graphics</span>
+                            </div>
+                        </div>
+                        <div class="cred-item">
+                            <i class="fas fa-drafting-compass"></i>
+                            <div>
+                                <strong>Design Tecnico</strong>
+                                <span>CAD 2D (ICDL Certified), modellazione 3D, rendering</span>
                             </div>
                         </div>
                         <div class="cred-item">
@@ -211,13 +210,78 @@
                         </div>
                     </div>
 
+                    <!-- NUOVO: Tech Stack -->
+                    <div class="tech-stack">
+                        <h4>Tecnologie & Strumenti</h4>
+                        <div class="tech-badges">
+                            <!-- Frontend -->
+                            <div class="tech-badge">
+                                <i class="fab fa-html5" style="color: #E34F26;"></i>
+                                <span>HTML5</span>
+                            </div>
+                            <div class="tech-badge">
+                                <i class="fab fa-css3-alt" style="color: #1572B6;"></i>
+                                <span>CSS3</span>
+                            </div>
+                            <div class="tech-badge">
+                                <i class="fab fa-js" style="color: #F7DF1E;"></i>
+                                <span>JavaScript</span>
+                            </div>
+
+                            <!-- Backend -->
+                            <div class="tech-badge">
+                                <i class="fab fa-python" style="color: #3776AB;"></i>
+                                <span>Python</span>
+                            </div>
+                            <div class="tech-badge">
+                                <i class="fab fa-php" style="color: #777BB4;"></i>
+                                <span>PHP</span>
+                            </div>
+
+                            <!-- Design & 3D -->
+                            <div class="tech-badge">
+                                <i class="fas fa-cube" style="color: #0696D7;"></i>
+                                <span>AutoCAD</span>
+                            </div>
+                            <div class="tech-badge">
+                                <i class="fas fa-cubes" style="color: #FF6B00;"></i>
+                                <span>Blender</span>
+                            </div>
+
+                            <!-- Video -->
+                            <div class="tech-badge">
+                                <i class="fas fa-film" style="color: #9999FF;"></i>
+                                <span>DaVinci Resolve Studio</span>
+                            </div>
+                            <div class="tech-badge">
+                                <i class="fas fa-palette" style="color: #31A8FF;"></i>
+                                <span>After Effects</span>
+                            </div>
+
+                            <!-- Database & Tools -->
+                            <div class="tech-badge">
+                                <i class="fas fa-database" style="color: #4479A1;"></i>
+                                <span>MySQL</span>
+                            </div>
+                            <div class="tech-badge">
+                                <i class="fab fa-git-alt" style="color: #F05032;"></i>
+                                <span>Git</span>
+                            </div>
+                            <div class="tech-badge">
+                                <i class="fab fa-github" style="color: #fff;"></i>
+                                <span>GitHub</span>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="value-proposition">
                         <h4>Perché collaborare con me</h4>
                         <ul>
                             <li>Comunicazione diretta e trasparente</li>
                             <li>Soluzioni personalizzate, no template</li>
                             <li>Supporto post-consegna incluso</li>
-                            <li>Prezzi chiari, senza sorprese</li>
+                            <li>Assistenza tecnica gratuita</li>
+                            <li>Garanzia di soddisfazione garantita</li>
                         </ul>
                     </div>
 
@@ -238,92 +302,127 @@
             <div class="section-header">
                 <span class="section-subtitle">Servizi</span>
                 <h2 class="section-title">Come posso <span class="gradient-text">aiutarti</span></h2>
+                <p class="section-description">Scorri per vedere tutti i servizi disponibili</p>
             </div>
 
-            <div class="services-grid-modern">
+            <!-- Carousel Container -->
+            <div class="services-carousel-wrapper">
+                <button class="carousel-btn prev" id="prevBtn" aria-label="Precedente">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
 
-                <!-- Sviluppo Web -->
-                <div class="service-card-modern">
-                    <div class="service-icon-modern">
-                        <i class="fas fa-laptop-code"></i>
+                <div class="services-carousel" id="servicesCarousel">
+
+                    <!-- Card 1: Sviluppo Web -->
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3>Sviluppo Web</h3>
+                        <p class="service-description">Landing page, siti web dinamici, e-commerce e web app su misura
+                            per il tuo business</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Landing Page & Portfolio</li>
+                            <li><i class="fas fa-check"></i> E-commerce Custom</li>
+                            <li><i class="fas fa-check"></i> Web App & Dashboard</li>
+                            <li><i class="fas fa-check"></i> Manutenzione Siti</li>
+                        </ul>
+                        <a href="#contact" class="btn-service">
+                            <span>Richiedi Info</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
-                    <h3>Sviluppo Web</h3>
-                    <p>Landing page, siti web dinamici, e-commerce e web app su misura</p>
-                    <ul class="service-features-modern">
-                        <li>Landing Page & Portfolio</li>
-                        <li>E-commerce Custom</li>
-                        <li>Web App & Dashboard</li>
-                        <li>Manutenzione Siti</li>
-                    </ul>
-                    <a href="#contact" class="btn-link">Scopri di più →</a>
+
+                    <!-- Card 2: Automazioni -->
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3>Automazioni & Script</h3>
+                        <p class="service-description">Elimina task ripetitivi e ottimizza i flussi di lavoro con
+                            soluzioni automatizzate</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Bot Telegram/Discord</li>
+                            <li><i class="fas fa-check"></i> Web Scraping</li>
+                            <li><i class="fas fa-check"></i> Automazione Excel/CSV</li>
+                            <li><i class="fas fa-check"></i> Integrazione API</li>
+                        </ul>
+                        <a href="#contact" class="btn-service">
+                            <span>Richiedi Info</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <!-- Card 3: Video Editing -->
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h3>Video Editing</h3>
+                        <p class="service-description">Post-produzione professionale per contenuti video di qualità e
+                            impatto visivo</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Montaggio Professionale</li>
+                            <li><i class="fas fa-check"></i> Color Grading</li>
+                            <li><i class="fas fa-check"></i> Motion Graphics</li>
+                            <li><i class="fas fa-check"></i> Video Promozionali</li>
+                        </ul>
+                        <a href="#contact" class="btn-service">
+                            <span>Richiedi Info</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <!-- Card 4: Design Tecnico -->
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-drafting-compass"></i>
+                        </div>
+                        <h3>Design Tecnico & 3D</h3>
+                        <p class="service-description">Modellazione e rendering per progetti tecnici, architettonici e
+                            industriali</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> CAD 2D (ICDL Certified)</li>
+                            <li><i class="fas fa-check"></i> Modellazione 3D</li>
+                            <li><i class="fas fa-check"></i> Rendering Fotorealistici</li>
+                            <li><i class="fas fa-check"></i> Planimetrie Tecniche</li>
+                        </ul>
+                        <a href="#contact" class="btn-service">
+                            <span>Richiedi Info</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <!-- Card 5: Servizi Drone (Coming Soon) -->
+                    <div class="service-card coming-soon">
+                        <div class="coming-soon-badge">Coming Soon</div>
+                        <div class="service-icon disabled">
+                            <i class="fa-solid fa-helicopter"></i>
+                        </div>
+                        <h3>Servizi Drone</h3>
+                        <p class="service-description">Riprese aeree certificate ENAC per immobili, eventi e ispezioni
+                            tecniche</p>
+                        <ul class="service-features disabled">
+                            <li><i class="fas fa-clock"></i> Riprese Immobiliari</li>
+                            <li><i class="fas fa-clock"></i> Video Eventi</li>
+                            <li><i class="fas fa-clock"></i> Ispezioni Tecniche</li>
+                            <li><i class="fas fa-clock"></i> Fotografia Aerea</li>
+                        </ul>
+                        <button class="btn-service" disabled>
+                            <span>Disponibile a breve</span>
+                            <i class="fas fa-lock"></i>
+                        </button>
+                    </div>
+
                 </div>
 
-                <!-- Automazioni -->
-                <div class="service-card-modern">
-                    <div class="service-icon-modern">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3>Automazioni & Script</h3>
-                    <p>Elimina task ripetitivi e ottimizza i flussi di lavoro</p>
-                    <ul class="service-features-modern">
-                        <li>Bot Telegram/Discord</li>
-                        <li>Web Scraping</li>
-                        <li>Automazione Excel/CSV</li>
-                        <li>Integrazione API</li>
-                    </ul>
-                    <a href="#contact" class="btn-link">Scopri di più →</a>
-                </div>
-
-                <!-- Video Editing -->
-                <div class="service-card-modern">
-                    <div class="service-icon-modern">
-                        <i class="fas fa-video"></i>
-                    </div>
-                    <h3>Video Editing</h3>
-                    <p>Post-produzione professionale per contenuti di qualità</p>
-                    <ul class="service-features-modern">
-                        <li>Montaggio Professionale</li>
-                        <li>Color Grading</li>
-                        <li>Motion Graphics</li>
-                        <li>Video Promozionali</li>
-                    </ul>
-                    <a href="#contact" class="btn-link">Scopri di più →</a>
-                </div>
-
-                <!-- Design Tecnico -->
-                <div class="service-card-modern">
-                    <div class="service-icon-modern">
-                        <i class="fas fa-drafting-compass"></i>
-                    </div>
-                    <h3>Design Tecnico & 3D</h3>
-                    <p>Modellazione e rendering per progetti tecnici e architettonici</p>
-                    <ul class="service-features-modern">
-                        <li>CAD 2D (ICDL Certified)</li>
-                        <li>Modellazione 3D</li>
-                        <li>Rendering Fotorealistici</li>
-                        <li>Planimetrie Tecniche</li>
-                    </ul>
-                    <a href="#contact" class="btn-link">Scopri di più →</a>
-                </div>
-
-                <!-- Servizi Drone -->
-                <div class="service-card-modern coming-soon-card">
-                    <div class="coming-soon-badge-large">Coming Soon</div>
-                    <div class="service-icon-modern">
-                        <i class="fa-solid fa-helicopter"></i>
-                    </div>
-                    <h3>Servizi Drone</h3>
-                    <p>Riprese aeree certificate per immobili ed eventi</p>
-                    <ul class="service-features-modern disabled">
-                        <li>Riprese Immobiliari</li>
-                        <li>Video Eventi</li>
-                        <li>Ispezioni Tecniche</li>
-                        <li>Fotografia Aerea</li>
-                    </ul>
-                    <span class="btn-link disabled">Disponibile a breve</span>
-                </div>
-
+                <button class="carousel-btn next" id="nextBtn" aria-label="Successivo">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
+
+            <!-- Carousel Dots -->
+            <div class="carousel-dots" id="carouselDots"></div>
         </div>
     </section>
 
