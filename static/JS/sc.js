@@ -235,21 +235,37 @@ if (contactForm) {
         const submitBtn = contactForm.querySelector('button[type="submit"]');
         const originalText = submitBtn.querySelector('span').textContent;
         
-        // Disable button
         submitBtn.disabled = true;
         submitBtn.querySelector('span').textContent = 'Invio in corso...';
         submitBtn.querySelector('i').className = 'fas fa-spinner fa-spin';
         
-        // Simulate sending (replace with actual API call)
-        setTimeout(() => {
-            alert('✅ Messaggio inviato con successo! Ti risponderò presto.');
-            contactForm.reset();
+        try {
+            const formData = new FormData(contactForm);
+            const response = await fetch('https://formspree.io/f/xkgqgrbv', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
             
-            // Re-enable button
+            if (response.ok) {
+                setTimeout(() => {
+                    window.location.href = './success.html';
+                }, 500);
+            } else {
+                alert('❌ Errore nell\'invio. Riprova più tardi.');
+                submitBtn.disabled = false;
+                submitBtn.querySelector('span').textContent = originalText;
+                submitBtn.querySelector('i').className = 'fas fa-paper-plane';
+            }
+        } catch (error) {
+            console.error('Errore:', error);
+            alert('❌ Errore nell\'invio. Riprova più tardi.');
             submitBtn.disabled = false;
             submitBtn.querySelector('span').textContent = originalText;
             submitBtn.querySelector('i').className = 'fas fa-paper-plane';
-        }, 2000);
+        }
     });
 }
 
