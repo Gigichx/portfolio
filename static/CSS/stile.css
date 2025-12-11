@@ -987,8 +987,8 @@ section {
     }
 
     .service-card {
-        flex: 0 0 calc(100% - 20px);
-        min-width: 280px;
+        flex: 0 0 100%;
+        min-width: 0;
     }
 
     .carousel-btn {
@@ -1013,13 +1013,13 @@ section {
 
 @media (max-width: 480px) {
     .services-carousel-wrapper {
-        padding: 0 40px;
+        padding: 0 30px;
     }
 
     .carousel-btn {
-        width: 36px;
-        height: 36px;
-        font-size: 14px;
+        width: 32px;
+        height: 32px;
+        font-size: 12px;
     }
 }
 
