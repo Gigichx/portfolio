@@ -1,0 +1,242 @@
+/* ===================================
+   SCROLL REVEAL ANIMATIONS
+=================================== */
+[data-animate] {
+    opacity: 0;
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Fade Up */
+[data-animate="fade-up"] {
+    transform: translateY(60px);
+}
+
+/* Fade Down */
+[data-animate="fade-down"] {
+    transform: translateY(-60px);
+}
+
+/* Fade Left */
+[data-animate="fade-left"] {
+    transform: translateX(60px);
+}
+
+/* Fade Right */
+[data-animate="fade-right"] {
+    transform: translateX(-60px);
+}
+
+/* Scale */
+[data-animate="scale"] {
+    transform: scale(0.85);
+}
+
+/* Fade (solo opacità) */
+[data-animate="fade"] {
+    transform: none;
+}
+
+/* Stato animato */
+[data-animate].animated {
+    opacity: 1;
+    transform: translateY(0) translateX(0) scale(1);
+}
+
+/* Delay progressivi */
+[data-delay="100"] { transition-delay: 0.1s; }
+[data-delay="200"] { transition-delay: 0.2s; }
+[data-delay="300"] { transition-delay: 0.3s; }
+[data-delay="400"] { transition-delay: 0.4s; }
+[data-delay="500"] { transition-delay: 0.5s; }
+[data-delay="600"] { transition-delay: 0.6s; }
+
+/* ===================================
+   NAVBAR GLASSMORPHISM (scroll)
+=================================== */
+.navbar {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar.scrolled {
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    padding: 12px 0;
+}
+
+.navbar.scrolled .logo img {
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+/* ===================================
+   SMOOTH SCROLL
+=================================== */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ===================================
+   PORTFOLIO CARDS 3D HOVER
+=================================== */
+.portfolio-item {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-10px) rotateX(2deg);
+    box-shadow: 0 20px 60px rgba(255, 51, 51, 0.3);
+}
+
+.portfolio-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(255, 51, 51, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.portfolio-item:hover::before {
+    opacity: 1;
+}
+
+/* ===================================
+   HERO SECTION ANIMATED
+=================================== */
+.hero-title,
+.hero-subtitle,
+.hero-description,
+.hero-buttons {
+    opacity: 0;
+    animation: slideInUp 0.8s ease forwards;
+}
+
+.hero-subtitle {
+    animation-delay: 0.2s;
+}
+
+.hero-title {
+    animation-delay: 0.4s;
+}
+
+.hero-description {
+    animation-delay: 0.6s;
+}
+
+.hero-buttons {
+    animation-delay: 0.8s;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===================================
+   BUTTONS HOVER EFFECT
+=================================== */
+.btn {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(255, 51, 51, 0.4);
+}
+
+/* ===================================
+   SERVICE CARDS HOVER
+=================================== */
+.service-card {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(255, 51, 51, 0.25);
+}
+
+.service-icon {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* ===================================
+   SCROLL INDICATOR
+=================================== */
+.scroll-indicator {
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* ===================================
+   RESPONSIVE
+=================================== */
+@media (max-width: 768px) {
+    .loading-line {
+        font-size: 24px;
+        letter-spacing: 1px;
+    }
+    
+    [data-animate="fade-up"],
+    [data-animate="fade-down"],
+    [data-animate="fade-left"],
+    [data-animate="fade-right"] {
+        transform: translateY(30px);
+    }
+    
+    [data-animate="scale"] {
+        transform: scale(0.9);
+    }
+}

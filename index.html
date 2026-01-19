@@ -41,27 +41,17 @@
          LOADING SCREEN
     =================================== -->
     <div id="loadingScreen">
-        <div class="loading-particles" id="particlesContainer"></div>
+        <div class="loading-content">
+            <div class="loading-text">
+                <h1 class="loading-line line1">WHERE STRATEGIC THINKING</h1>
+                <h1 class="loading-line line2">MEETS VISUAL STORYTELLING</h1>
+            </div>
 
-        <div class="loading-logo">
-            <div class="logo-ring"></div>
-            <img src="static/CSS/IMG/logo chx.png" alt="GigiCHX Logo">
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
         </div>
-
-        <div class="loading-text" id="loadingText">
-            <span>Preparando esperienze uniche</span>
-        </div>
-
-        <div class="progress-container">
-            <div class="progress-bar" id="progressBar"></div>
-        </div>
-
-        <div class="loading-percentage">
-            <span id="percentage">0%</span>
-            <span class="loading-dots">
-                <span>.</span><span>.</span><span>.</span>
-            </span>
-        </div>
+    </div>
     </div>
 
     <!-- ===================================
@@ -93,11 +83,15 @@
     </nav>
 
     <!-- ===================================
-         HERO SECTION
-    =================================== -->
+     HERO SECTION
+=================================== -->
     <section class="hero" id="home">
+        <!-- Video Background -->
         <div class="hero-background">
-            <div class="hero-video-placeholder"></div>
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="static/video/VIdeoHP.mp4" type="video/mp4">
+                Il tuo browser non supporta i video HTML5.
+            </video>
         </div>
 
         <div class="container">
@@ -113,6 +107,7 @@
                         Sviluppo web, automazioni, design tecnico e video editing.
                         Lavoro con PMI e professionisti che vogliono crescere online.
                     </p>
+
                     <!-- Value Props -->
                     <div class="hero-value-props">
                         <div class="value-item">
@@ -135,7 +130,7 @@
                             <i class="fas fa-arrow-right"></i>
                         </a>
                         <a href="https://wa.me/393714774763?text=Ciao!%20Vorrei%20info%20sui%20tuoi%20servizi"
-                            class="btn btn-secondary" target="_blank">
+                            class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
                             <span>WhatsApp Diretto</span>
                             <i class="fab fa-whatsapp"></i>
                         </a>
@@ -427,8 +422,8 @@
     </section>
 
     <!-- ===================================
-         PORTFOLIO SECTION (Semplificato)
-    =================================== -->
+     PORTFOLIO SECTION
+=================================== -->
     <section class="portfolio" id="portfolio">
         <div class="container">
             <div class="section-header">
@@ -437,44 +432,39 @@
             </div>
 
             <div class="portfolio-grid">
+                <!-- Progetto 1: Hackathon -->
                 <div class="portfolio-item">
                     <div class="portfolio-image">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop"
-                            alt="Progetto Web" loading="lazy">
+                        <img src="static/CSS/IMG/504201617_122131284686668829_8649897990194310644_n.jpg"
+                            alt="Hackathon Project" loading="lazy"
+                            onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop'">
                         <div class="portfolio-overlay">
                             <div class="portfolio-content">
-                                <h3>E-commerce Moda</h3>
-                                <p><i class="fas fa-shopping-cart"></i> Sviluppo Web</p>
+                                <h3>Caponio Events | Portfolio Web </h3>
+                                <p><i class="fas fa-code"></i> Web Development</p>
+                                <a href="https://gigichx.github.io/sitoCaponioEvents/" target="_blank"
+                                    class="portfolio-link">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Visualizza
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="portfolio-item">
+                <!-- <div class="portfolio-item">
                     <div class="portfolio-image">
-                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop"
-                            alt="Ripresa Drone" loading="lazy">
+                        <img src="static/CSS/IMG/hackathon-preview.jpg" alt="Hackathon Project" loading="lazy"
+                            onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop'">
                         <div class="portfolio-overlay">
                             <div class="portfolio-content">
-                                <h3>Villa Pugliese</h3>
-                                <p><i class="fas fa-drone"></i> Riprese Aeree</p>
+                                <h3>Caponio Events | Portfolio Web </h3>
+                                <p><i class="fas fa-code"></i> Web Development</p>
+                                <a href="https://github.com/Gigichx/hackathon1" target="_blank" class="portfolio-link">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Visualizza
+                                </a>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="portfolio-item">
-                    <div class="portfolio-image">
-                        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=600&fit=crop"
-                            alt="Automazione" loading="lazy">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-content">
-                                <h3>Bot Telegram</h3>
-                                <p><i class="fas fa-robot"></i> Automazione</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
@@ -528,7 +518,8 @@
                     </div>
                 </div>
 
-                <form class="contact-form" id="contactForm" action="https://formspree.io/f/xkgqgrbv" method="POST" accept-charset="UTF-8">
+                <form class="contact-form" id="contactForm" action="https://formspree.io/f/xkgqgrbv" method="POST"
+                    accept-charset="UTF-8">
                     <input type="hidden" name="_next" value="https://gigichx.github.io/portfolio/success.html">
                     <div class="form-group">
                         <input type="text" id="name" name="name" placeholder="Nome Completo *" required>
@@ -599,7 +590,7 @@
 
     <!-- Custom JavaScript -->
     <script src="static/JS/sc.js"></script>
-
+    <script src="static/JS/animation.js"></script>
 </body>
 
-</html>-->
+</html>
